@@ -9,4 +9,4 @@ func set_player(new_player):
 func _process(_delta):
 	if !player:
 		return
-	translation = player.translation + offset
+	global_translation = player.get_global_transform_interpolated().origin + offset
