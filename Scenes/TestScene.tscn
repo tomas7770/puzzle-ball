@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/PlayerBall/PlayerBall.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/PlayerCamera/PlayerCamera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/TestScene.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/ColoredSensor/ColoredSensor.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/ColoredDoor/ColoredDoor.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/ColoredKey/ColoredKey.tscn" type="PackedScene" id=6]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 20, 1, 1 )
@@ -21,6 +22,23 @@ albedo_color = Color( 0.619608, 0.329412, 0, 1 )
 [sub_resource type="CubeMesh" id=4]
 material = SubResource( 5 )
 size = Vector3( 2, 8, 2 )
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 0, 0, 0.74902, 1 )
+
+[sub_resource type="CubeMesh" id=7]
+material = SubResource( 6 )
+size = Vector3( 2, 8, 2 )
+
+[sub_resource type="BoxShape" id=8]
+extents = Vector3( 1, 0.75, 0.75 )
+
+[sub_resource type="SpatialMaterial" id=9]
+albedo_color = Color( 0, 0, 0.74902, 1 )
+
+[sub_resource type="CubeMesh" id=10]
+material = SubResource( 9 )
+size = Vector3( 2, 1.5, 1.5 )
 
 [node name="TestScene" type="Spatial"]
 script = ExtResource( 3 )
@@ -51,3 +69,34 @@ shape = SubResource( 3 )
 
 [node name="MeshInstance" type="MeshInstance" parent="StaticBody2"]
 mesh = SubResource( 4 )
+
+[node name="StaticBody3" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 3.48, 0 )
+script = ExtResource( 5 )
+
+[node name="ColoredSensor" parent="StaticBody3" instance=ExtResource( 4 )]
+color = 2
+shape = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody3"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody3"]
+mesh = SubResource( 7 )
+
+[node name="BlueBlock" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 0 )
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+
+[node name="CollisionShape" type="CollisionShape" parent="BlueBlock"]
+shape = SubResource( 8 )
+
+[node name="MeshInstance" type="MeshInstance" parent="BlueBlock"]
+mesh = SubResource( 10 )
+
+[node name="ColoredKey" parent="BlueBlock" instance=ExtResource( 6 )]
+color = 2
+shape = SubResource( 8 )
