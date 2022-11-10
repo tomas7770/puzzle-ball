@@ -1,11 +1,15 @@
 extends RigidBody
 
 onready var jump_ray_casts = $JumpRayCasts
+onready var magnet_area = $MagnetArea
 
 var acceleration = 20
 var max_speed = 10
 var jump_force = 8
 var max_slope_angle = 45
+var magnet_safe_distance = 4
+
+var magnet_enabled = false
 
 func _ready():
 	# To prevent raycasts from being affected by ball rotation;
@@ -18,6 +22,8 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("plr1_jump"):
 		_try_jump()
+	elif event.is_action_pressed("plr1_magnet"):
+		_toggle_magnet()
 
 func _physics_process(delta):
 	_update_raycast_positions()
@@ -28,6 +34,7 @@ func _physics_process(delta):
 		_apply_movement_force(1, delta)
 	else:
 		angular_damp = 15
+	_apply_magnet_forces()
 
 func _update_raycast_positions():
 	jump_ray_casts.translation = translation
@@ -48,3 +55,13 @@ func _is_on_floor():
 func _try_jump():
 	if _is_on_floor():
 		apply_central_impulse(Vector3(0, jump_force, 0))
+
+func _toggle_magnet():
+	magnet_enabled = !magnet_enabled
+
+func _apply_magnet_forces():
+	if !magnet_enabled:
+		return
+	for body in magnet_area.get_overlapping_bodies():
+		if body.has_method("apply_magnet_forces"):
+			body.apply_magnet_forces(translation - body.translation, magnet_safe_distance)

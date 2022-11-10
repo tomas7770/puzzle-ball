@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/PlayerBall/PlayerBall.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/ColoredKey/ColoredKey.tscn" type="PackedScene" id=2]
@@ -10,6 +10,9 @@ albedo_color = Color( 0.619608, 0.329412, 0, 1 )
 
 [sub_resource type="SphereMesh" id=2]
 material = SubResource( 3 )
+
+[sub_resource type="SphereShape" id=4]
+radius = 8.0
 
 [node name="PlayerBall" type="RigidBody"]
 axis_lock_linear_z = true
@@ -36,3 +39,8 @@ enabled = true
 
 [node name="ColoredKey" parent="." instance=ExtResource( 2 )]
 shape = SubResource( 1 )
+
+[node name="MagnetArea" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="MagnetArea"]
+shape = SubResource( 4 )
