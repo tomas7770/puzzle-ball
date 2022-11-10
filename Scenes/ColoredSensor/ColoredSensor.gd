@@ -12,5 +12,5 @@ func _ready():
 	collision_shape.shape = shape
 
 func _on_ColoredSensor_area_entered(area):
-	if area.has_method("get_color_code") && area.get_color_code() == color:
+	if area.has_method("get_key_color_code") && area.get_key_color_code() == color:
 		emit_signal("activated")
