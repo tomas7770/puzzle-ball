@@ -1,0 +1,13 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+path="res://.import/Level2.map-2d9d4f34f70a73d6865285f6d6691607.tres"
+
+[deps]
+
+source_file="res://Scenes/Levels/Level2/Map/Level2.map"
+dest_files=[ "res://.import/Level2.map-2d9d4f34f70a73d6865285f6d6691607.tres" ]
+
+[params]
+
