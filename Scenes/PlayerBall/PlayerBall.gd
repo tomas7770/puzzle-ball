@@ -12,6 +12,7 @@ var magnet_safe_distance = 4
 var magnet_enabled = false
 
 func _ready():
+	set_meta("player", true)
 	# To prevent raycasts from being affected by ball rotation;
 	# Their position will be updated manually each physics frame
 	jump_ray_casts.set_as_toplevel(true)

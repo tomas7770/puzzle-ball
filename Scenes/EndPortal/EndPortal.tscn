@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Shaders/Portal.tres" type="Shader" id=1]
+[ext_resource path="res://Scenes/EndPortal/EndPortal.gd" type="Script" id=2]
+
+[sub_resource type="SphereShape" id=3]
+radius = 0.75
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/albedo = Vector3( 0.75, 0, 1 )
+
+[sub_resource type="QuadMesh" id=2]
+material = SubResource( 1 )
+size = Vector2( 2, 2 )
+
+[node name="EndPortal" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Area" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 2 )
+
+[connection signal="body_entered" from="Area" to="." method="_on_Portal_body_entered"]

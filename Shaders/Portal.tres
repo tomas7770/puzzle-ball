@@ -1,0 +1,20 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type spatial;
+
+uniform vec3 albedo = vec3(1,1,1);
+
+void vertex() {
+	VERTEX = (vec4(VERTEX, 1.0)*MODELVIEW_MATRIX).xyz;
+}
+
+float radius_squared(float x, float y) {
+	return pow(x-0.5, 2.0)+pow(y-0.5, 2.0);
+}
+
+void fragment() {
+	ALBEDO = albedo*min(1.0, 4.0*sqrt(radius_squared(UV.x, UV.y)));
+	ALPHA = (1.0-4.0*radius_squared(UV.x, UV.y))*abs(sin(50.0*radius_squared(UV.x, UV.y)+4.0*TIME));
+}
+"
