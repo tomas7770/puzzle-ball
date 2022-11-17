@@ -4,4 +4,5 @@
 
 [node name="PlayerCamera" type="Camera"]
 physics_interpolation_mode = 1
+fov = 90.0
 script = ExtResource( 1 )
