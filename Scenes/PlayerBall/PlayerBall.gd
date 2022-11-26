@@ -5,7 +5,7 @@ onready var magnet_area = $MagnetArea
 
 var acceleration = 20
 var max_speed = 10
-var jump_force = 10
+var jump_force = 12
 var max_slope_angle = 45
 var magnet_safe_distance = 4
 
