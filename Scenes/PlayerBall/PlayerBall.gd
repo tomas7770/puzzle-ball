@@ -27,7 +27,7 @@ func _input(event):
 		_toggle_magnet()
 
 func _physics_process(delta):
-	_update_raycast_positions()
+	_update_raycast_positions(delta)
 	angular_damp = -1
 	if Input.is_action_pressed("plr1_left"):
 		_apply_movement_force(-1, delta)
@@ -37,8 +37,10 @@ func _physics_process(delta):
 		angular_damp = 15
 	_apply_magnet_forces()
 
-func _update_raycast_positions():
-	jump_ray_casts.translation = translation
+func _update_raycast_positions(delta):
+	jump_ray_casts.translation = translation + linear_velocity*delta
+	for ray_cast in jump_ray_casts.get_children():
+		ray_cast.force_raycast_update()
 
 func _apply_movement_force(dir, delta):
 	# Hacky condition to limit velocity only for player-controlled movement
