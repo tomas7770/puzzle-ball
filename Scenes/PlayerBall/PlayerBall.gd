@@ -13,6 +13,8 @@ var magnet_safe_distance = 4
 
 var magnet_enabled = false
 
+var current_interaction_area = null
+
 func _ready():
 	set_meta("player", true)
 	# To prevent raycasts from being affected by ball rotation;
@@ -27,6 +29,8 @@ func _input(event):
 		_try_jump()
 	elif event.is_action_pressed("plr1_magnet"):
 		_toggle_magnet()
+	elif event.is_action_pressed("plr1_interact"):
+		_try_interaction()
 
 func _physics_process(delta):
 	_update_raycast_positions(delta)
@@ -94,3 +98,13 @@ func _on_MagnetArea_body_entered(body):
 func _on_MagnetArea_body_exited(body):
 	if magnet_enabled:
 		_body_exited_magnet(body)
+
+func entered_interaction_area(area):
+	current_interaction_area = area
+
+func exited_interaction_area(_area):
+	current_interaction_area = null
+
+func _try_interaction():
+	if current_interaction_area:
+		current_interaction_area.interact(self)
