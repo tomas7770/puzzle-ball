@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=2]
+
+[ext_resource path="res://Shaders/Electricity.tres" type="Shader" id=1]
+
+[sub_resource type="OpenSimplexNoise" id=1]
+
+[sub_resource type="NoiseTexture" id=2]
+noise = SubResource( 1 )
+
+[sub_resource type="OpenSimplexNoise" id=3]
+seed = 100
+
+[sub_resource type="NoiseTexture" id=4]
+noise = SubResource( 3 )
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/NOISE = SubResource( 2 )
+shader_param/NOISE2 = SubResource( 4 )

@@ -52,3 +52,6 @@ shape = SubResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="MagnetArea"]
 shape = SubResource( 4 )
+
+[connection signal="body_entered" from="MagnetArea" to="." method="_on_MagnetArea_body_entered"]
+[connection signal="body_exited" from="MagnetArea" to="." method="_on_MagnetArea_body_exited"]

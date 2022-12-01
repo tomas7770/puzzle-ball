@@ -1,0 +1,15 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type spatial;
+render_mode unshaded;
+uniform sampler2D NOISE;
+uniform sampler2D NOISE2;
+
+void fragment() {
+	float intensity1 = texture(NOISE, vec2(UV.x*1.0+TIME/2.0, UV.y*1.0+TIME/2.5)).x;
+	float intensity2 = texture(NOISE, UV*1.0-TIME/1.5).x;
+	float total_intensity = pow(sin((intensity1+intensity2)*10.0), 7.5);
+	ALPHA = total_intensity;
+}
+"

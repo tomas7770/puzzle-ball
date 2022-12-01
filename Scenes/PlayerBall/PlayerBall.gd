@@ -2,6 +2,8 @@ extends RigidBody
 
 onready var jump_ray_casts = $JumpRayCasts
 onready var magnet_area = $MagnetArea
+onready var mesh_instance = $MeshInstance
+var electricity_material = preload("res://Textures/ElectricityMaterial.tres")
 
 var acceleration = 20
 var max_speed = 10
@@ -61,6 +63,14 @@ func _try_jump():
 
 func _toggle_magnet():
 	magnet_enabled = !magnet_enabled
+	if magnet_enabled:
+		mesh_instance.get_active_material(0).next_pass = electricity_material
+		for body in magnet_area.get_overlapping_bodies():
+			_body_entered_magnet(body)
+	else:
+		mesh_instance.get_active_material(0).next_pass = null
+		for body in magnet_area.get_overlapping_bodies():
+			_body_exited_magnet(body)
 
 func _apply_magnet_forces():
 	if !magnet_enabled:
@@ -68,3 +78,19 @@ func _apply_magnet_forces():
 	for body in magnet_area.get_overlapping_bodies():
 		if body.has_method("apply_magnet_forces"):
 			body.apply_magnet_forces(translation - body.translation, magnet_safe_distance)
+
+func _body_entered_magnet(body):
+	if body.has_method("entered_magnet"):
+		body.entered_magnet()
+
+func _body_exited_magnet(body):
+	if body.has_method("exited_magnet"):
+		body.exited_magnet()
+
+func _on_MagnetArea_body_entered(body):
+	if magnet_enabled:
+		_body_entered_magnet(body)
+
+func _on_MagnetArea_body_exited(body):
+	if magnet_enabled:
+		_body_exited_magnet(body)
