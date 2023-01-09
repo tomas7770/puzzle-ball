@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Scenes/Levels/LevelScene.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/PlayerCamera/PlayerCamera.tscn" type="PackedScene" id=2]
@@ -7,16 +7,12 @@
 [ext_resource path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" type="Resource" id=5]
 [ext_resource path="res://Scenes/ColoredKey/ColoredKey.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/MagnetizedRigidBody/MagnetizedRigidBody.gd" type="Script" id=7]
-[ext_resource path="res://Scenes/ColoredSensor/ColoredSensor.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/ColoredDoor/ColoredDoor.gd" type="Script" id=9]
+[ext_resource path="res://Scenes/ColoredDoor/ColoredDoor.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Textures/GrayForceField.tres" type="Material" id=10]
 [ext_resource path="res://Scenes/EndPortal/EndPortal.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/RespawnButton/RespawnButton.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Textures/GrayDoor.tres" type="Material" id=13]
 [ext_resource path="res://Textures/GrayBlock.tres" type="Material" id=14]
-
-[sub_resource type="BoxShape" id=75]
-extents = Vector3( 1, 3, 1 )
 
 [sub_resource type="BoxShape" id=151]
 extents = Vector3( 1, 2.5, 1 )
@@ -102,18 +98,16 @@ next_level = "Level1"
 [node name="PlayerBall" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 18, 0 )
 
-[node name="GrayDoor2" type="StaticBody" parent="."]
+[node name="GrayDoor" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 19.5, 0 )
-script = ExtResource( 9 )
 
-[node name="ColoredSensor" parent="GrayDoor2" instance=ExtResource( 8 )]
+[node name="ColoredSensor" parent="GrayDoor" index="0"]
 color = 1
-shape = SubResource( 75 )
 
-[node name="CollisionShape" type="CollisionShape" parent="GrayDoor2"]
+[node name="CollisionShape" parent="GrayDoor" index="1"]
 shape = SubResource( 151 )
 
-[node name="MeshInstance" type="MeshInstance" parent="GrayDoor2"]
+[node name="MeshInstance" parent="GrayDoor" index="2"]
 mesh = SubResource( 152 )
 
 [node name="GrayForceField" type="StaticBody" parent="."]
@@ -215,3 +209,5 @@ shape = SubResource( 165 )
 
 [node name="entity_0_brush_11_collision_shape" type="CollisionShape" parent="Map/entity_0_worldspawn"]
 shape = SubResource( 166 )
+
+[editable path="GrayDoor"]
