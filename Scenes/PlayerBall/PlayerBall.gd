@@ -65,6 +65,9 @@ func _try_jump():
 	if _is_on_floor():
 		apply_central_impulse(Vector3(0, jump_force, 0))
 
+func _body_get_magnet(body):
+	return body.get_magnet() if body.has_method("get_magnet") else null
+
 func _toggle_magnet():
 	magnet_enabled = !magnet_enabled
 	if magnet_enabled:
@@ -80,16 +83,19 @@ func _apply_magnet_forces():
 	if !magnet_enabled:
 		return
 	for body in magnet_area.get_overlapping_bodies():
-		if body.has_method("apply_magnet_forces"):
-			body.apply_magnet_forces(translation - body.translation, magnet_safe_distance)
+		var magnet = _body_get_magnet(body)
+		if magnet:
+			magnet.apply_magnet_forces(translation - body.translation, magnet_safe_distance)
 
 func _body_entered_magnet(body):
-	if body.has_method("entered_magnet"):
-		body.entered_magnet()
+	var magnet = _body_get_magnet(body)
+	if magnet:
+		magnet.entered_magnet()
 
 func _body_exited_magnet(body):
-	if body.has_method("exited_magnet"):
-		body.exited_magnet()
+	var magnet = _body_get_magnet(body)
+	if magnet:
+		magnet.exited_magnet()
 
 func _on_MagnetArea_body_entered(body):
 	if magnet_enabled:

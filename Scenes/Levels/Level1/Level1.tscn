@@ -1,12 +1,11 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Scenes/PlayerBall/PlayerBall.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/PlayerCamera/PlayerCamera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Levels/LevelScene.gd" type="Script" id=3]
 [ext_resource path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" type="Resource" id=4]
 [ext_resource path="res://addons/qodot/src/nodes/qodot_map.gd" type="Script" id=5]
-[ext_resource path="res://Scenes/MagnetizedRigidBody/MagnetizedRigidBody.gd" type="Script" id=6]
-[ext_resource path="res://Scenes/ColoredKey/ColoredKey.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/ColoredBlock/ColoredBlock.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/EndPortal/EndPortal.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Textures/BrownDoor.tres" type="Material" id=11]
 [ext_resource path="res://Textures/GrayDoor.tres" type="Material" id=12]
@@ -115,23 +114,17 @@ shape = SubResource( 17 )
 [node name="MeshInstance" parent="GrayDoor" index="2"]
 mesh = SubResource( 18 )
 
-[node name="GrayBlock" type="RigidBody" parent="."]
+[node name="GrayBlock" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 14, 0 )
-axis_lock_linear_z = true
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
-script = ExtResource( 6 )
 
-[node name="CollisionShape" type="CollisionShape" parent="GrayBlock"]
+[node name="CollisionShape" parent="GrayBlock" index="0"]
 shape = SubResource( 19 )
 
-[node name="MeshInstance" type="MeshInstance" parent="GrayBlock"]
+[node name="MeshInstance" parent="GrayBlock" index="1"]
 mesh = SubResource( 20 )
 
-[node name="ColoredKey" parent="GrayBlock" instance=ExtResource( 9 )]
+[node name="ColoredKey" parent="GrayBlock" index="2"]
 color = 1
-shape = SubResource( 19 )
 
 [node name="EndPortal" parent="." instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 16, 0 )
@@ -196,3 +189,4 @@ shape = SubResource( 33 )
 
 [editable path="BrownDoor"]
 [editable path="GrayDoor"]
+[editable path="GrayBlock"]

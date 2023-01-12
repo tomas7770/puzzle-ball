@@ -9,5 +9,9 @@ onready var collision_shape = $CollisionShape
 func _ready():
 	collision_shape.shape = shape
 
+func set_shape(new_shape):
+	shape = new_shape
+	collision_shape.shape = shape
+
 func get_key_color_code():
 	return color
