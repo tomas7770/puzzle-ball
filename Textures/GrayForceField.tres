@@ -3,5 +3,6 @@
 [ext_resource path="res://Shaders/ForceField.tres" type="Shader" id=1]
 
 [resource]
+render_priority = 1
 shader = ExtResource( 1 )
 shader_param/albedo = Vector3( 0.5, 0.5, 0.5 )
