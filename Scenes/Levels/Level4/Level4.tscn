@@ -297,7 +297,7 @@ mesh = SubResource( 72 )
 color = 2
 
 [node name="BrownBlock" parent="." instance=ExtResource( 13 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -4, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0 )
 
 [node name="CollisionShape" parent="BrownBlock" index="0"]
 shape = SubResource( 73 )
