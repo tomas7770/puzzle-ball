@@ -188,6 +188,10 @@ color = 2
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 1.5, 0 )
 object_to_respawn = NodePath("../BlueBlock")
 
+[node name="RespawnButton2" parent="." instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -6.5, 0 )
+object_to_respawn = NodePath("../GrayBlock")
+
 [node name="EndPortal" parent="." instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 4, 0 )
 
