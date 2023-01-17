@@ -16,6 +16,8 @@ func _ready():
 
 func _on_sensor_activated():
 	collision_shape.queue_free()
+	if mesh_instance:
+		mesh_instance.mesh.surface_get_material(0).flags_transparent = true
 	animation_player.play("DoorDestroy")
 	destroy_timer.start()
 
