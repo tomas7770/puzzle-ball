@@ -1,13 +1,41 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/ColoredDoor/ColoredDoor.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/ColoredSensor/ColoredSensor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/ColoredDoor/DoorDestroyAnim.tres" type="Animation" id=3]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:door_transparency")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [node name="ColoredDoor" type="StaticBody"]
 script = ExtResource( 1 )
+door_opacity = 1.0
 
 [node name="ColoredSensor" parent="." instance=ExtResource( 2 )]
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/DoorDestroy = ExtResource( 3 )
+anims/RESET = SubResource( 1 )
+
+[node name="DestroyTimer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="DestroyTimer" to="." method="_on_DestroyTimer_timeout"]

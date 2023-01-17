@@ -1,16 +1,27 @@
 extends PhysicsBody
 
 onready var sensor = $ColoredSensor
-var collision_shape
+onready var collision_shape = $CollisionShape
+onready var mesh_instance = $MeshInstance
+onready var animation_player = $AnimationPlayer
+onready var destroy_timer = $DestroyTimer
+export (float) var door_opacity setget _set_door_opacity
 
 func _ready():
-	for child in get_children():
-		if child is CollisionShape:
-			collision_shape = child
-			break
-	if !(sensor.shape) and collision_shape:
+	if !(sensor.shape):
 		sensor.set_shape(collision_shape.shape)
 	sensor.connect("activated", self, "_on_sensor_activated")
+	# Make the material unique so that each door can be faded out individually
+	mesh_instance.mesh.surface_set_material(0, mesh_instance.mesh.surface_get_material(0).duplicate())
 
 func _on_sensor_activated():
+	collision_shape.queue_free()
+	animation_player.play("DoorDestroy")
+	destroy_timer.start()
+
+func _on_DestroyTimer_timeout():
 	queue_free()
+
+func _set_door_opacity(opacity):
+	if mesh_instance:
+		mesh_instance.mesh.surface_get_material(0).albedo_color.a = opacity
