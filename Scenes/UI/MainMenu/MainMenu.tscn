@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/UI/MainMenu/MainMenu.gd" type="Script" id=1]
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -75.0
+margin_top = -85.0
+margin_right = 75.0
+margin_bottom = 85.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="Buttons"]
+margin_right = 150.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 150, 75 )
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="Buttons"]
+margin_top = 95.0
+margin_right = 150.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 150, 75 )
+text = "Quit"
+
+[connection signal="pressed" from="Buttons/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="Buttons/QuitButton" to="." method="_on_QuitButton_pressed"]
