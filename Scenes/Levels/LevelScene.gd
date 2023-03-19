@@ -6,9 +6,16 @@ onready var player_camera = $PlayerCamera
 onready var player_ball = $PlayerBall
 
 func _ready():
-	propagate_call("set_level_scene", [self])
+	for child in get_children():
+		_listen_to_child_signals(child)
 	player_camera.set_player(player_ball)
 
-func finish_level():
+func _listen_to_child_signals(child: Node):
+	if child.has_signal("request_finish_level"):
+		var status = child.connect("request_finish_level", self, "_finish_level")
+		if status != OK:
+			print("Connect request_finish_level signal: Error " + str(status))
+
+func _finish_level():
 	# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://Scenes/Levels/{lvl}/{lvl}.tscn".format({"lvl": next_level}))

@@ -1,10 +1,7 @@
 extends Spatial
 
-var level_scene
-
-func set_level_scene(scene):
-	level_scene = scene
+signal request_finish_level
 
 func _on_Portal_body_entered(body):
 	if body.get_meta("player", false):
-		level_scene.finish_level()
+		emit_signal("request_finish_level")
