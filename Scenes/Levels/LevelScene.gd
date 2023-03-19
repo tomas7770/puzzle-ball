@@ -11,10 +11,10 @@ func _ready():
 	player_camera.set_player(player_ball)
 
 func _listen_to_child_signals(child: Node):
-	if child.has_signal("request_finish_level"):
-		var status = child.connect("request_finish_level", self, "_finish_level")
+	if child.has_signal("plr_entered_endportal"):
+		var status = child.connect("plr_entered_endportal", self, "_finish_level")
 		if status != OK:
-			print("Connect request_finish_level signal: Error " + str(status))
+			print("Connect plr_entered_endportal signal: Error " + str(status))
 
 func _finish_level():
 	# warning-ignore:return_value_discarded
