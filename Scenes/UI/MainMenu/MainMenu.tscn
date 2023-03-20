@@ -23,6 +23,7 @@ alignment = 1
 margin_right = 150.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 150, 75 )
+focus_neighbour_bottom = NodePath("../QuitButton")
 text = "Play"
 
 [node name="QuitButton" type="Button" parent="Buttons"]
@@ -30,6 +31,7 @@ margin_top = 95.0
 margin_right = 150.0
 margin_bottom = 170.0
 rect_min_size = Vector2( 150, 75 )
+focus_neighbour_top = NodePath("../PlayButton")
 text = "Quit"
 
 [connection signal="pressed" from="Buttons/PlayButton" to="." method="_on_PlayButton_pressed"]

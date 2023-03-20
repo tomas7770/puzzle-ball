@@ -1,5 +1,8 @@
 extends Control
 
+func _ready():
+	$Buttons/PlayButton.grab_focus()
+
 func _on_PlayButton_pressed():
 	var status = LevelManager.start_level("Level1")
 	if status != OK:
