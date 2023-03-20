@@ -1,5 +1,8 @@
 extends RigidBody
 
+signal plr_entered_interaction_area
+signal plr_exited_interaction_area
+
 onready var jump_ray_casts = $JumpRayCasts
 onready var magnet_area = $MagnetArea
 onready var mesh_instance = $MeshInstance
@@ -107,9 +110,11 @@ func _on_MagnetArea_body_exited(body):
 
 func entered_interaction_area(area):
 	current_interaction_area = area
+	emit_signal("plr_entered_interaction_area", area)
 
-func exited_interaction_area(_area):
+func exited_interaction_area(area):
 	current_interaction_area = null
+	emit_signal("plr_exited_interaction_area", area)
 
 func _try_interaction():
 	if current_interaction_area:
