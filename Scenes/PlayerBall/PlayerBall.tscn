@@ -8,11 +8,13 @@
 radius = 0.95
 
 [sub_resource type="SpatialMaterial" id=3]
+resource_local_to_scene = true
 albedo_color = Color( 0.619608, 0.329412, 0, 1 )
 albedo_texture = ExtResource( 3 )
 uv1_scale = Vector3( 8, 4, 1 )
 
 [sub_resource type="SphereMesh" id=2]
+resource_local_to_scene = true
 material = SubResource( 3 )
 radius = 0.95
 height = 1.9
