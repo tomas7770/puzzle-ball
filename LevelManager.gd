@@ -20,3 +20,9 @@ func _setup_level():
 	var game_hud = game_hud_scene.instance()
 	game_hud.set_player(level_scene.get_player())
 	get_tree().get_root().add_child(game_hud)
+
+func pause_game():
+	get_tree().paused = true
+
+func unpause_game():
+	get_tree().paused = false

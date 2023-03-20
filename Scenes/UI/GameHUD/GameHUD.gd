@@ -1,14 +1,27 @@
 extends Control
 
 const interaction_hint_scene = preload("res://Scenes/UI/InteractionHint/InteractionHint.tscn")
+onready var pause_panel = $PausePanel
 
 var interaction_hint_map = {}
+
+var is_paused = false
 
 func set_player(player: RigidBody):
 	# warning-ignore:return_value_discarded
 	player.connect("plr_entered_interaction_area", self, "_on_plr_entered_interaction_area")
 	# warning-ignore:return_value_discarded
 	player.connect("plr_exited_interaction_area", self, "_on_plr_exited_interaction_area")
+
+func _input(event):
+	if event.is_action_pressed("plr1_pause"):
+		if is_paused:
+			LevelManager.unpause_game()
+			pause_panel.hide()
+		else:
+			LevelManager.pause_game()
+			pause_panel.show()
+		is_paused = !is_paused
 
 func _process(_delta):
 	var camera = get_viewport().get_camera()
