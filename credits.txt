@@ -1,3 +1,4 @@
 Third party credits
 
 Textures/door.png: "Pyrol" (https://opengameart.org/content/various-rooftops)
+Textures/sky.png: "leyren" (https://opengameart.org/content/starsspace-background)
