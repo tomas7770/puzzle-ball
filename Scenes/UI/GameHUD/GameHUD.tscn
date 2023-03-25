@@ -33,13 +33,13 @@ margin_bottom = -10.0
 custom_constants/separation = 16
 
 [node name="MagnetIcon" type="TextureRect" parent="MagnetContainer"]
-self_modulate = Color( 0, 0, 0, 0.498039 )
+self_modulate = Color( 0, 0, 0, 0.623529 )
 margin_right = 48.0
 margin_bottom = 48.0
 texture = ExtResource( 3 )
 
 [node name="ButtonTexture" type="TextureRect" parent="MagnetContainer"]
-self_modulate = Color( 1, 1, 1, 0.498039 )
+self_modulate = Color( 1, 1, 1, 0.623529 )
 margin_left = 64.0
 margin_right = 96.0
 margin_bottom = 48.0
