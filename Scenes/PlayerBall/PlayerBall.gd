@@ -2,6 +2,8 @@ extends RigidBody
 
 signal plr_entered_interaction_area
 signal plr_exited_interaction_area
+signal plr_magnet_enabled
+signal plr_magnet_disabled
 
 onready var jump_ray_casts = $JumpRayCasts
 onready var magnet_area = $MagnetArea
@@ -77,10 +79,12 @@ func _toggle_magnet():
 		mesh_instance.get_active_material(0).next_pass = electricity_material
 		for body in magnet_area.get_overlapping_bodies():
 			_body_entered_magnet(body)
+		emit_signal("plr_magnet_enabled")
 	else:
 		mesh_instance.get_active_material(0).next_pass = null
 		for body in magnet_area.get_overlapping_bodies():
 			_body_exited_magnet(body)
+		emit_signal("plr_magnet_disabled")
 
 func _apply_magnet_forces():
 	if !magnet_enabled:

@@ -1,17 +1,31 @@
 extends Control
 
 const interaction_hint_scene = preload("res://Scenes/UI/InteractionHint/InteractionHint.tscn")
+
+onready var magnet_icon = $MagnetContainer/MagnetIcon
+onready var magnet_button_label = $MagnetContainer/ButtonTexture/Label
 onready var pause_panel = $PausePanel
 
 var interaction_hint_map = {}
 
 var is_paused = false
 
+func _ready():
+	var events = InputMap.get_action_list("plr1_magnet")
+	for event in events:
+		if event is InputEventKey:
+			magnet_button_label.text = OS.get_scancode_string(event.scancode)
+
 func set_player(player: RigidBody):
 	# warning-ignore:return_value_discarded
 	player.connect("plr_entered_interaction_area", self, "_on_plr_entered_interaction_area")
 	# warning-ignore:return_value_discarded
 	player.connect("plr_exited_interaction_area", self, "_on_plr_exited_interaction_area")
+	# warning-ignore:return_value_discarded
+	player.connect("plr_magnet_enabled", self, "_on_plr_magnet_enabled")
+	# warning-ignore:return_value_discarded
+	player.connect("plr_magnet_disabled", self, "_on_plr_magnet_disabled")
+	_on_plr_magnet_disabled()
 
 func _input(event):
 	if event.is_action_pressed("plr1_pause"):
@@ -60,3 +74,9 @@ func _on_plr_exited_interaction_area(area):
 	if interaction_hint:
 		remove_child(interaction_hint)
 		interaction_hint_map.erase(area)
+
+func _on_plr_magnet_enabled():
+	magnet_icon.self_modulate.v = 1.0
+
+func _on_plr_magnet_disabled():
+	magnet_icon.self_modulate.v = 0.0
