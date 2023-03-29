@@ -38,14 +38,17 @@ mesh = SubResource( 2 )
 
 [node name="RayCast" type="RayCast" parent="JumpRayCasts"]
 enabled = true
+collision_mask = 3
 
 [node name="RayCast2" type="RayCast" parent="JumpRayCasts"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0 )
 enabled = true
+collision_mask = 3
 
 [node name="RayCast3" type="RayCast" parent="JumpRayCasts"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0 )
 enabled = true
+collision_mask = 3
 
 [node name="ColoredKey" parent="." instance=ExtResource( 2 )]
 shape = SubResource( 1 )
