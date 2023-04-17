@@ -80,7 +80,7 @@ points = PoolVector3Array( 5, 14, -1, 5, 9, -1, 16, 9, -1, 16, 14, -1, 5, 14, 1,
 [sub_resource type="ConvexPolygonShape" id=40]
 points = PoolVector3Array( 5, 7, -1, 5, 1, -1, 16, 1, -1, 16, 7, -1, 5, 7, 1, 5, 1, 1, 16, 1, 1, 16, 7, 1 )
 
-[node name="Level5" type="Spatial"]
+[node name="Level7" type="Spatial"]
 script = ExtResource( 2 )
 next_level = "Level1"
 
@@ -142,7 +142,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, 0 )
 
 [node name="Map" type="Spatial" parent="."]
 script = ExtResource( 3 )
-map_file = "Scenes/Levels/Level5/Map/Level5.map"
+map_file = "Scenes/Levels/Level7/Map/Level7.map"
 inverse_scale_factor = 16.0
 entity_fgd = ExtResource( 1 )
 base_texture_dir = "res://textures"
