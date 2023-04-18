@@ -186,6 +186,7 @@ color = 1
 
 [node name="BlueBlock" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 45.25, 0 )
+mass = 0.1
 magnetized = false
 
 [node name="CollisionShape" parent="BlueBlock" index="0"]
