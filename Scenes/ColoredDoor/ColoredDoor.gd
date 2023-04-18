@@ -11,7 +11,8 @@ func _ready():
 	if !(sensor.shape):
 		sensor.set_shape(collision_shape.shape)
 	sensor.connect("activated", self, "_on_sensor_activated")
-	# Make the material unique so that each door can be faded out individually
+	# Make the mesh and material unique so that each door can be faded out individually
+	mesh_instance.mesh = mesh_instance.mesh.duplicate()
 	mesh_instance.mesh.surface_set_material(0, mesh_instance.mesh.surface_get_material(0).duplicate())
 
 func _on_sensor_activated():
