@@ -18,7 +18,9 @@ func _ready():
 func _on_sensor_activated():
 	collision_shape.queue_free()
 	if mesh_instance:
-		mesh_instance.mesh.surface_get_material(0).flags_transparent = true
+		var material = mesh_instance.mesh.surface_get_material(0)
+		if material.get("flags_transparent") != null:
+			material.flags_transparent = true
 	animation_player.play("DoorDestroy")
 	destroy_timer.start()
 
@@ -27,4 +29,6 @@ func _on_DestroyTimer_timeout():
 
 func _set_door_opacity(opacity):
 	if mesh_instance:
-		mesh_instance.mesh.surface_get_material(0).albedo_color.a = opacity
+		var material = mesh_instance.mesh.surface_get_material(0)
+		if material.get("albedo_color") != null:
+			mesh_instance.mesh.surface_get_material(0).albedo_color.a = opacity
