@@ -846,6 +846,10 @@ object_to_respawn = NodePath("../GrayBlock2")
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -16.5, 0 )
 object_to_respawn = NodePath("../PurpleBlock2")
 
+[node name="RespawnButton4" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 9.5, 0 )
+object_to_respawn = NodePath("../PurpleBlock")
+
 [node name="EndPortal" parent="." instance=ExtResource( 19 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, -15, 0 )
 
