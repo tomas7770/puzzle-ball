@@ -7,6 +7,8 @@ onready var animation_player = $AnimationPlayer
 onready var destroy_timer = $DestroyTimer
 export (float) var door_opacity setget _set_door_opacity
 
+var destroyed = false
+
 func _ready():
 	if !(sensor.shape):
 		sensor.set_shape(collision_shape.shape)
@@ -16,6 +18,9 @@ func _ready():
 	mesh_instance.mesh.surface_set_material(0, mesh_instance.mesh.surface_get_material(0).duplicate())
 
 func _on_sensor_activated():
+	if destroyed:
+		return
+	destroyed = true
 	collision_shape.queue_free()
 	if mesh_instance:
 		var material = mesh_instance.mesh.surface_get_material(0)
