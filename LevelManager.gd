@@ -47,3 +47,12 @@ func pause_game():
 
 func unpause_game():
 	get_tree().paused = false
+
+func end_game():
+	if game_hud:
+		get_tree().get_root().remove_child(game_hud)
+		game_hud = null
+	unpause_game()
+	var status = get_tree().change_scene("res://Scenes/UI/EndScreen/EndScreen.tscn")
+	if status != OK:
+		print("End game: Error " + str(status))

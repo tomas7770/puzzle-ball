@@ -82,7 +82,7 @@ points = PoolVector3Array( 5, 7, -1, 5, 1, -1, 16, 1, -1, 16, 7, -1, 5, 7, 1, 5,
 
 [node name="Level7" type="Spatial"]
 script = ExtResource( 2 )
-next_level = "Level1"
+next_level = null
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 5 )]
 
