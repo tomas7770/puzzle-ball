@@ -1,5 +1,7 @@
 extends RigidBody
 
+const BRAKE_DAMP = 15.0
+
 signal plr_entered_interaction_area
 signal plr_exited_interaction_area
 signal plr_magnet_enabled
@@ -41,11 +43,13 @@ func _physics_process(delta):
 	_update_raycast_positions(delta)
 	angular_damp = -1
 	if Input.is_action_pressed("plr1_left"):
-		_apply_movement_force(-1, delta)
+		_apply_movement_force(-1.0, delta)
 	elif Input.is_action_pressed("plr1_right"):
-		_apply_movement_force(1, delta)
+		_apply_movement_force(1.0, delta)
+	elif Input.is_action_pressed("plr1_analog"):
+		_apply_movement_force(Input.get_action_strength("plr1_analog"), delta)
 	else:
-		angular_damp = 15
+		angular_damp = BRAKE_DAMP
 	_apply_magnet_forces()
 
 func _update_raycast_positions(delta):
@@ -53,11 +57,19 @@ func _update_raycast_positions(delta):
 	for ray_cast in jump_ray_casts.get_children():
 		ray_cast.force_raycast_update()
 
-func _apply_movement_force(dir, delta):
+func _apply_movement_force(strength, delta):
+	# Analog strength limits velocity, not acceleration
+	strength = clamp(strength, -1.0, 1.0)
+	var current_max_speed = max_speed
+	# Max speed deadzone
+	if abs(strength) < 0.95:
+		current_max_speed = max_speed*abs(strength)
 	# Hacky condition to limit velocity only for player-controlled movement
-	if abs(linear_velocity.x) < max_speed:
-		var real_accel = sign(dir)*min(acceleration, (max_speed - abs(linear_velocity.x))/delta)
+	if abs(linear_velocity.x) < current_max_speed:
+		var real_accel = sign(strength)*min(acceleration, (current_max_speed - abs(linear_velocity.x))/delta)
 		add_central_force(Vector3(real_accel, 0, 0))
+	elif current_max_speed < max_speed and abs(linear_velocity.x) > current_max_speed*1.05:
+		angular_damp = BRAKE_DAMP
 
 func _is_on_floor():
 	for ray_cast in jump_ray_casts.get_children():

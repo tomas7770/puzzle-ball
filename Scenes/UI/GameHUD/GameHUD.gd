@@ -11,6 +11,9 @@ var interaction_hint_map = {}
 var is_paused = false
 
 func _ready():
+	if !OS.has_touchscreen_ui_hint():
+		$TouchControls.queue_free()
+	
 	var events = InputMap.get_action_list("plr1_magnet")
 	for event in events:
 		if event is InputEventKey:
