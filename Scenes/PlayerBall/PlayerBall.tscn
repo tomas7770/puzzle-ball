@@ -2,7 +2,8 @@
 
 [ext_resource path="res://Scenes/PlayerBall/PlayerBall.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/ColoredKey/ColoredKey.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Textures/checkers.png" type="Texture" id=3]
+[ext_resource path="res://textures/checkers.png" type="Texture" id=3]
+
 
 [sub_resource type="SphereShape" id=1]
 radius = 0.95

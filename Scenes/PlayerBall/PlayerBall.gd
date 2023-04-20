@@ -8,7 +8,7 @@ signal plr_magnet_disabled
 onready var jump_ray_casts = $JumpRayCasts
 onready var magnet_area = $MagnetArea
 onready var mesh_instance = $MeshInstance
-var electricity_material = preload("res://Textures/ElectricityMaterial.tres")
+var electricity_material = preload("res://textures/ElectricityMaterial.tres")
 
 var acceleration = 20
 var max_speed = 10

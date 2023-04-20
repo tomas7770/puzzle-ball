@@ -3,7 +3,7 @@ extends Node
 var body
 
 var magnet_force = 30
-var electricity_material = preload("res://Textures/ElectricityMaterial.tres")
+var electricity_material = preload("res://textures/ElectricityMaterial.tres")
 var mesh_instance
 
 func _ready():

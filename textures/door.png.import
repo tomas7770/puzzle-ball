@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/checkers.png-f191e5f6a9c6b9d1ed4f88a232fefae8.s3tc.stex"
-path.etc="res://.import/checkers.png-f191e5f6a9c6b9d1ed4f88a232fefae8.etc.stex"
+path.s3tc="res://.import/door.png-6bba13150eb8ba972a9fef3861be8872.s3tc.stex"
+path.etc="res://.import/door.png-6bba13150eb8ba972a9fef3861be8872.etc.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures/checkers.png"
-dest_files=[ "res://.import/checkers.png-f191e5f6a9c6b9d1ed4f88a232fefae8.s3tc.stex", "res://.import/checkers.png-f191e5f6a9c6b9d1ed4f88a232fefae8.etc.stex" ]
+source_file="res://textures/door.png"
+dest_files=[ "res://.import/door.png-6bba13150eb8ba972a9fef3861be8872.s3tc.stex", "res://.import/door.png-6bba13150eb8ba972a9fef3861be8872.etc.stex" ]
 
 [params]
 

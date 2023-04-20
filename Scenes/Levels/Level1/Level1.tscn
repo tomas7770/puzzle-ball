@@ -8,10 +8,11 @@
 [ext_resource path="res://Scenes/ColoredBlock/ColoredBlock.tscn" type="PackedScene" id=6]
 [ext_resource path="res://textures/Map/rock.png" type="Texture" id=7]
 [ext_resource path="res://Scenes/EndPortal/EndPortal.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Textures/BrownDoor.tres" type="Material" id=11]
-[ext_resource path="res://Textures/GrayDoor.tres" type="Material" id=12]
-[ext_resource path="res://Textures/GrayBlock.tres" type="Material" id=13]
+[ext_resource path="res://textures/BrownDoor.tres" type="Material" id=11]
+[ext_resource path="res://textures/GrayDoor.tres" type="Material" id=12]
+[ext_resource path="res://textures/GrayBlock.tres" type="Material" id=13]
 [ext_resource path="res://Scenes/ColoredDoor/ColoredDoor.tscn" type="PackedScene" id=14]
+
 
 [sub_resource type="BoxShape" id=15]
 extents = Vector3( 1, 3, 1 )
