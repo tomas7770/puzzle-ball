@@ -1,14 +1,18 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/UI/MainMenu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/OpenSans.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=2]
-size = 20
+size = 32
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=1]
-size = 24
+size = 40
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 40
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=3]
@@ -22,6 +26,10 @@ font_data = ExtResource( 2 )
 [sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=6]
+size = 50
+font_data = ExtResource( 2 )
+
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -32,31 +40,36 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -77.0
-margin_top = -150.0
-margin_right = 77.0
-margin_bottom = -110.0
+margin_left = -151.0
+margin_top = -120.0
+margin_right = 151.0
+margin_bottom = -65.0
 
 [node name="PrevButton" type="Button" parent="LevelSelect"]
-margin_right = 23.0
-margin_bottom = 40.0
+margin_right = 60.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 60, 0 )
+focus_neighbour_right = NodePath("../NextButton")
+focus_neighbour_bottom = NodePath("../../Buttons/PlayButton")
 custom_fonts/font = SubResource( 2 )
 text = "<"
 
 [node name="Label" type="Label" parent="LevelSelect"]
-margin_left = 27.0
-margin_top = 3.0
-margin_right = 127.0
-margin_bottom = 37.0
-rect_min_size = Vector2( 100, 0 )
+margin_left = 64.0
+margin_right = 238.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 174, 0 )
 custom_fonts/font = SubResource( 1 )
 text = "Level"
 align = 1
 
 [node name="NextButton" type="Button" parent="LevelSelect"]
-margin_left = 131.0
-margin_right = 154.0
-margin_bottom = 40.0
+margin_left = 242.0
+margin_right = 302.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 60, 0 )
+focus_neighbour_left = NodePath("../PrevButton")
+focus_neighbour_bottom = NodePath("../../Buttons/PlayButton")
 custom_fonts/font = SubResource( 2 )
 text = ">"
 
@@ -65,26 +78,29 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -75.0
-margin_top = -85.0
-margin_right = 75.0
-margin_bottom = 85.0
+margin_left = -125.0
+margin_top = -40.0
+margin_right = 125.0
+margin_bottom = 140.0
 custom_constants/separation = 20
 alignment = 1
 
 [node name="PlayButton" type="Button" parent="Buttons"]
-margin_right = 150.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 150, 75 )
+margin_right = 250.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 250, 80 )
+focus_neighbour_top = NodePath("../../LevelSelect/PrevButton")
 focus_neighbour_bottom = NodePath("../QuitButton")
+custom_fonts/font = SubResource( 7 )
 text = "Play"
 
 [node name="QuitButton" type="Button" parent="Buttons"]
-margin_top = 95.0
-margin_right = 150.0
-margin_bottom = 170.0
-rect_min_size = Vector2( 150, 75 )
+margin_top = 100.0
+margin_right = 250.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 250, 80 )
 focus_neighbour_top = NodePath("../PlayButton")
+custom_fonts/font = SubResource( 7 )
 text = "Quit"
 
 [node name="DemoPopup" type="Panel" parent="."]
@@ -132,6 +148,17 @@ margin_bottom = -8.0
 custom_fonts/font = SubResource( 5 )
 text = "Note: Audio is not yet implemented"
 valign = 1
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -123.5
+margin_top = 20.0
+margin_right = 123.5
+margin_bottom = 89.0
+custom_fonts/font = SubResource( 6 )
+text = "Puzzle Ball"
+align = 1
 
 [connection signal="pressed" from="LevelSelect/PrevButton" to="." method="_on_PrevLvlButton_pressed"]
 [connection signal="pressed" from="LevelSelect/NextButton" to="." method="_on_NextLvlButton_pressed"]
