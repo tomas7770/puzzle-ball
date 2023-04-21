@@ -25,6 +25,7 @@ outline_color = Color( 1, 1, 1, 0.705882 )
 font_data = ExtResource( 8 )
 
 [sub_resource type="ViewportTexture" id=1]
+flags = 4
 viewport_path = NodePath("Viewport")
 
 [node name="TouchControls" type="Control"]
