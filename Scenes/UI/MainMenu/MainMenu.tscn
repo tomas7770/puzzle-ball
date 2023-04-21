@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/UI/MainMenu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/OpenSans.ttf" type="DynamicFontData" id=2]
@@ -9,6 +9,14 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
 font_data = ExtResource( 2 )
 
 [node name="MainMenu" type="Control"]
@@ -76,7 +84,43 @@ rect_min_size = Vector2( 150, 75 )
 focus_neighbour_top = NodePath("../PlayButton")
 text = "Quit"
 
+[node name="DemoPopup" type="Panel" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -300.0
+margin_top = -175.0
+margin_right = 300.0
+margin_bottom = 175.0
+
+[node name="Label" type="Label" parent="DemoPopup"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 3 )
+text = "Welcome! This is an early demo, and as a result,
+does not represent a finished version of the game.
+You may encounter bugs, an unbalanced difficulty
+curve, ugly graphics, or other issues.
+Regardless, the developer hopes you enjoy trying it :)"
+
+[node name="OkDemoButton" type="Button" parent="DemoPopup"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -120.0
+margin_top = -130.0
+margin_right = 120.0
+margin_bottom = -50.0
+custom_fonts/font = SubResource( 4 )
+text = "Got it"
+
 [connection signal="pressed" from="LevelSelect/PrevButton" to="." method="_on_PrevLvlButton_pressed"]
 [connection signal="pressed" from="LevelSelect/NextButton" to="." method="_on_NextLvlButton_pressed"]
 [connection signal="pressed" from="Buttons/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="Buttons/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="DemoPopup/OkDemoButton" to="." method="_on_OkDemoButton_pressed"]

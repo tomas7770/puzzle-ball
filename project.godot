@@ -216,6 +216,7 @@ config/quit_on_go_back=false
 Const="*res://Const.gd"
 Shortcuts="*res://Shortcuts.gd"
 LevelManager="*res://LevelManager.gd"
+Global="*res://Global.gd"
 
 [display]
 

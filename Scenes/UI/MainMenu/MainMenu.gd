@@ -6,7 +6,12 @@ onready var level_label = $LevelSelect/Label
 var selected_level = 1
 
 func _ready():
-	$Buttons/PlayButton.grab_focus()
+	if !Global.demo_popup_shown and OS.has_feature("standalone"):
+		$DemoPopup.show()
+		$DemoPopup/OkDemoButton.grab_focus()
+		Global.demo_popup_shown = true
+	else:
+		$Buttons/PlayButton.grab_focus()
 	_update_level_label()
 
 func _on_PlayButton_pressed():
@@ -31,3 +36,7 @@ func _on_NextLvlButton_pressed():
 	if selected_level > MAX_LEVEL:
 		selected_level = 1
 	_update_level_label()
+
+func _on_OkDemoButton_pressed():
+	$DemoPopup.hide()
+	$Buttons/PlayButton.grab_focus()
