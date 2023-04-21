@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/UI/MainMenu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/OpenSans.ttf" type="DynamicFontData" id=2]
@@ -17,6 +17,9 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 2 )
 
 [node name="MainMenu" type="Control"]
@@ -118,6 +121,17 @@ margin_right = 120.0
 margin_bottom = -50.0
 custom_fonts/font = SubResource( 4 )
 text = "Got it"
+
+[node name="AudioNoteLabel" type="Label" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = -42.0
+margin_right = 401.0
+margin_bottom = -8.0
+custom_fonts/font = SubResource( 5 )
+text = "Note: Audio is not yet implemented"
+valign = 1
 
 [connection signal="pressed" from="LevelSelect/PrevButton" to="." method="_on_PrevLvlButton_pressed"]
 [connection signal="pressed" from="LevelSelect/NextButton" to="." method="_on_NextLvlButton_pressed"]
