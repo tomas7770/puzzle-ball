@@ -40,3 +40,6 @@ func _on_NextLvlButton_pressed():
 func _on_OkDemoButton_pressed():
 	$DemoPopup.hide()
 	$Buttons/PlayButton.grab_focus()
+
+func _on_ControlsButton_pressed():
+	$ControlsPopup.popup()

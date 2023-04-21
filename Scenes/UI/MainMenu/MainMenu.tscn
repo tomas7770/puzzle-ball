@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/UI/MainMenu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/OpenSans.ttf" type="DynamicFontData" id=2]
@@ -20,6 +20,18 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=6]
 size = 50
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 40
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 22
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=3]
@@ -100,8 +112,21 @@ margin_right = 250.0
 margin_bottom = 180.0
 rect_min_size = Vector2( 250, 80 )
 focus_neighbour_top = NodePath("../PlayButton")
+focus_neighbour_bottom = NodePath("../../ControlsButton")
 custom_fonts/font = SubResource( 7 )
 text = "Quit"
+
+[node name="ControlsButton" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -60.0
+margin_top = -61.0
+rect_min_size = Vector2( 60, 60 )
+focus_neighbour_top = NodePath("../Buttons/QuitButton")
+custom_fonts/font = SubResource( 7 )
+text = "?"
 
 [node name="AudioNoteLabel" type="Label" parent="."]
 anchor_top = 1.0
@@ -124,6 +149,47 @@ margin_bottom = 89.0
 custom_fonts/font = SubResource( 6 )
 text = "Puzzle Ball"
 align = 1
+
+[node name="ControlsPopup" type="PopupDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -250.0
+margin_top = -200.0
+margin_right = 250.0
+margin_bottom = 200.0
+
+[node name="Label" type="Label" parent="ControlsPopup"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 346.0
+margin_bottom = 63.0
+custom_fonts/font = SubResource( 8 )
+text = "Keyboard controls"
+
+[node name="Label2" type="Label" parent="ControlsPopup"]
+margin_left = 8.0
+margin_top = 72.0
+margin_right = 346.0
+margin_bottom = 309.0
+custom_fonts/font = SubResource( 9 )
+text = "Move: Arrow keys
+Jump: Space
+Magnet: Z
+Interact: E
+Pause: Escape"
+
+[node name="Label3" type="Label" parent="ControlsPopup"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = -75.0
+margin_right = 380.0
+margin_bottom = -10.0
+custom_fonts/font = SubResource( 10 )
+text = "Click/tap outside the popup or press
+escape to dismiss"
 
 [node name="DemoPopup" type="PopupDialog" parent="."]
 anchor_left = 0.5
@@ -164,4 +230,5 @@ text = "Got it"
 [connection signal="pressed" from="LevelSelect/NextButton" to="." method="_on_NextLvlButton_pressed"]
 [connection signal="pressed" from="Buttons/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="Buttons/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="ControlsButton" to="." method="_on_ControlsButton_pressed"]
 [connection signal="pressed" from="DemoPopup/OkDemoButton" to="." method="_on_OkDemoButton_pressed"]
