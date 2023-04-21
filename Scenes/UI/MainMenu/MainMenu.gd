@@ -7,7 +7,7 @@ var selected_level = 1
 
 func _ready():
 	if !Global.demo_popup_shown and OS.has_feature("standalone"):
-		$DemoPopup.show()
+		$DemoPopup.popup()
 		$DemoPopup/OkDemoButton.grab_focus()
 		Global.demo_popup_shown = true
 	else:
