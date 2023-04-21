@@ -13,6 +13,8 @@ onready var viewport_rect = $ViewportRect
 onready var stick_control = $Viewport/StickControl
 onready var stick_center = $Viewport/StickControl/StickCenter
 
+onready var magnet_icon = $Viewport/MagnetButton/TextureRect
+
 var analog_pressed = false
 var analog_finger_index
 
@@ -87,3 +89,15 @@ func _get_relative_stick_pos(input_pos):
 func _get_stick_strength(input_pos):
 	var input_vector = (input_pos - _get_stick_center_pos()).limit_length(ANALOG_STICK_ACT_RADIUS)
 	return input_vector.x / ANALOG_STICK_ACT_RADIUS
+
+func show_interact_button():
+	$Viewport/InteractButton.visible = true
+
+func hide_interact_button():
+	$Viewport/InteractButton.visible = false
+
+func on_magnet_enabled():
+	magnet_icon.self_modulate.v = 1.0
+
+func on_magnet_disabled():
+	magnet_icon.self_modulate.v = 0.0

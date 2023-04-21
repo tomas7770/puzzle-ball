@@ -1,8 +1,28 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://textures/UI/analogstick_base.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/UI/TouchControls/TouchControls.gd" type="Script" id=2]
 [ext_resource path="res://textures/UI/analogstick_control.png" type="Texture" id=3]
+[ext_resource path="res://textures/UI/touchscreen_button_normal.png" type="Texture" id=4]
+[ext_resource path="res://textures/UI/touchscreen_button_pressed.png" type="Texture" id=5]
+[ext_resource path="res://textures/UI/touchscreen_interact_normal.png" type="Texture" id=6]
+[ext_resource path="res://textures/UI/touchscreen_interact_pressed.png" type="Texture" id=7]
+[ext_resource path="res://Fonts/OpenSans.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://textures/UI/touchscreen_arrow.png" type="Texture" id=9]
+[ext_resource path="res://textures/UI/touchscreen_magnet.png" type="Texture" id=10]
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 8 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 40, 40 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 50
+outline_size = 5
+outline_color = Color( 1, 1, 1, 0.705882 )
+font_data = ExtResource( 8 )
 
 [sub_resource type="ViewportTexture" id=1]
 viewport_path = NodePath("Viewport")
@@ -50,6 +70,119 @@ margin_top = -32.0
 margin_right = 32.0
 margin_bottom = 32.0
 texture = ExtResource( 3 )
+
+[node name="JumpButton" type="Control" parent="Viewport"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -210.0
+margin_top = -130.0
+margin_right = -114.0
+margin_bottom = -34.0
+
+[node name="JumpButton" type="TouchScreenButton" parent="Viewport/JumpButton"]
+self_modulate = Color( 1, 1, 1, 0.623529 )
+normal = ExtResource( 4 )
+pressed = ExtResource( 5 )
+action = "plr1_jump"
+
+[node name="TextureRect" type="TextureRect" parent="Viewport/JumpButton"]
+self_modulate = Color( 1, 1, 1, 0.627451 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -28.0
+margin_top = -28.0
+margin_right = 28.0
+margin_bottom = 28.0
+texture = ExtResource( 9 )
+
+[node name="MagnetButton" type="Control" parent="Viewport"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -140.0
+margin_top = -230.0
+margin_right = -44.0
+margin_bottom = -134.0
+
+[node name="MagnetButton" type="TouchScreenButton" parent="Viewport/MagnetButton"]
+self_modulate = Color( 1, 1, 1, 0.623529 )
+normal = ExtResource( 4 )
+pressed = ExtResource( 5 )
+action = "plr1_magnet"
+
+[node name="TextureRect" type="TextureRect" parent="Viewport/MagnetButton"]
+self_modulate = Color( 0, 0, 0, 0.627451 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -28.0
+margin_top = -28.0
+margin_right = 28.0
+margin_bottom = 28.0
+texture = ExtResource( 10 )
+
+[node name="InteractButton" type="Control" parent="Viewport"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -70.0
+margin_top = -230.0
+margin_right = 100.0
+margin_bottom = -180.0
+
+[node name="InteractButton" type="TouchScreenButton" parent="Viewport/InteractButton"]
+self_modulate = Color( 1, 1, 1, 0.705882 )
+normal = ExtResource( 6 )
+pressed = ExtResource( 7 )
+action = "plr1_interact"
+
+[node name="Label" type="Label" parent="Viewport/InteractButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -57.5
+margin_top = -22.5
+margin_right = 57.5
+margin_bottom = 22.5
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Interact"
+clip_text = true
+
+[node name="PauseButton" type="Control" parent="Viewport"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -80.0
+margin_bottom = 80.0
+
+[node name="PauseButton" type="TouchScreenButton" parent="Viewport/PauseButton"]
+self_modulate = Color( 1, 1, 1, 0.623529 )
+shape = SubResource( 3 )
+action = "plr1_pause"
+
+[node name="Label" type="Label" parent="Viewport/PauseButton"]
+self_modulate = Color( 1, 1, 1, 0.705882 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -33.5
+margin_top = -34.5
+margin_right = 33.5
+margin_bottom = 34.5
+custom_fonts/font = SubResource( 4 )
+text = "| |"
+align = 1
+valign = 1
 
 [node name="ViewportRect" type="TextureRect" parent="."]
 anchor_right = 1.0

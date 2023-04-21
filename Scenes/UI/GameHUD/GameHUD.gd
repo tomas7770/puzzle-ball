@@ -6,12 +6,19 @@ onready var magnet_icon = $MagnetContainer/MagnetIcon
 onready var magnet_button_label = $MagnetContainer/ButtonTexture/Label
 onready var pause_panel = $PausePanel
 
+var touchscreen_mode = false
+
 var interaction_hint_map = {}
 
 var is_paused = false
 
 func _ready():
-	if !OS.has_touchscreen_ui_hint():
+	if OS.has_touchscreen_ui_hint():
+		touchscreen_mode = true
+		magnet_icon.visible = false
+		magnet_button_label.visible = false
+		$MagnetContainer/ButtonTexture.visible = false
+	else:
 		$TouchControls.queue_free()
 	
 	var events = InputMap.get_action_list("plr1_magnet")
@@ -67,19 +74,29 @@ func _process(_delta):
 		interaction_hint.rect_position = camera.unproject_position(target_position)
 
 func _on_plr_entered_interaction_area(area):
+	if touchscreen_mode:
+		$TouchControls.show_interact_button()
+		return
 	var interaction_hint = interaction_hint_scene.instance()
 	interaction_hint_map[area] = interaction_hint
 	add_child(interaction_hint)
 	move_child(interaction_hint, 0)
 
 func _on_plr_exited_interaction_area(area):
+	if touchscreen_mode:
+		$TouchControls.hide_interact_button()
+		return
 	var interaction_hint = interaction_hint_map.get(area)
 	if interaction_hint:
 		remove_child(interaction_hint)
 		interaction_hint_map.erase(area)
 
 func _on_plr_magnet_enabled():
+	if touchscreen_mode:
+		$TouchControls.on_magnet_enabled()
 	magnet_icon.self_modulate.v = 1.0
 
 func _on_plr_magnet_disabled():
+	if touchscreen_mode:
+		$TouchControls.on_magnet_disabled()
 	magnet_icon.self_modulate.v = 0.0
