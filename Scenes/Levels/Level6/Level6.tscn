@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=2]
+[gd_scene load_steps=92 format=2]
 
 [ext_resource path="res://Scenes/Levels/LevelScene.gd" type="Script" id=1]
 [ext_resource path="res://textures/Map/rock.png" type="Texture" id=2]
@@ -371,6 +371,10 @@ extents = Vector3( 2, 0.35, 1 )
 [sub_resource type="CubeMesh" id=174]
 material = ExtResource( 18 )
 size = Vector3( 4, 0.7, 2 )
+
+[sub_resource type="CubeMesh" id=225]
+material = ExtResource( 18 )
+size = Vector3( 2, 6, 2 )
 
 [sub_resource type="CubeMesh" id=50]
 material = ExtResource( 15 )
@@ -777,6 +781,17 @@ shape = SubResource( 173 )
 
 [node name="MeshInstance" type="MeshInstance" parent="BlueForceField4"]
 mesh = SubResource( 174 )
+
+[node name="BlueForceField5" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -14, 0 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape" type="CollisionShape" parent="BlueForceField5"]
+shape = SubResource( 119 )
+
+[node name="MeshInstance" type="MeshInstance" parent="BlueForceField5"]
+mesh = SubResource( 225 )
 
 [node name="PurpleForceField" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5, 8.5, 0 )
