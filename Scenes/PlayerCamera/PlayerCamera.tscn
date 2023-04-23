@@ -3,5 +3,6 @@
 [ext_resource path="res://Scenes/PlayerCamera/PlayerCamera.gd" type="Script" id=1]
 
 [node name="PlayerCamera" type="Camera"]
+pause_mode = 2
 physics_interpolation_mode = 1
 script = ExtResource( 1 )

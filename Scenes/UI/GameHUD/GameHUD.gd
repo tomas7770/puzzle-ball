@@ -5,12 +5,14 @@ const interaction_hint_scene = preload("res://Scenes/UI/InteractionHint/Interact
 onready var magnet_icon = $MagnetContainer/MagnetIcon
 onready var magnet_button_label = $MagnetContainer/ButtonTexture/Label
 onready var pause_panel = $PausePanel
+onready var transition_anim_player = $TransitionRect/AnimationPlayer
 
 var touchscreen_mode = false
 
 var interaction_hint_map = {}
 
 var is_paused = false
+var pause_menu_locked = true
 
 func _ready():
 	if OS.has_touchscreen_ui_hint():
@@ -37,8 +39,16 @@ func set_player(player: RigidBody):
 	player.connect("plr_magnet_disabled", self, "_on_plr_magnet_disabled")
 	_on_plr_magnet_disabled()
 
+func on_level_started():
+	_transition_in()
+	$LevelTransitionTimer.start()
+
+func on_level_ended():
+	_transition_out()
+	pause_menu_locked = true
+
 func _input(event):
-	if event.is_action_pressed("plr1_pause"):
+	if event.is_action_pressed("plr1_pause") and !pause_menu_locked:
 		if is_paused:
 			_unpause()
 		else:
@@ -57,7 +67,8 @@ func _on_ResumeButton_pressed():
 
 func _on_RestartButton_pressed():
 	LevelManager.restart_level()
-	_unpause()
+	pause_panel.hide()
+	pause_menu_locked = true
 
 func _on_QuitButton_pressed():
 	LevelManager.quit_level()
@@ -100,3 +111,13 @@ func _on_plr_magnet_disabled():
 	if touchscreen_mode:
 		$TouchControls.on_magnet_disabled()
 	magnet_icon.self_modulate.v = 0.0
+
+func _transition_in():
+	transition_anim_player.play("TransitionIn")
+
+func _transition_out():
+	transition_anim_player.play_backwards("TransitionIn")
+
+func _on_LevelTransitionTimer_timeout():
+	_unpause()
+	pause_menu_locked = false

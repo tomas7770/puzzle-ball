@@ -1,0 +1,16 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform float circle_size : hint_range(0.0, 1.0);
+
+void fragment() {
+	float ratio = SCREEN_PIXEL_SIZE.y / SCREEN_PIXEL_SIZE.x;
+	vec2 correct_UV = vec2(UV.x*ratio, UV.y);
+	float diagonal_radius = distance(vec2(0.0, 0.0), vec2(0.5*ratio, 0.5));
+	float dist = distance(vec2(0.5*ratio, 0.5), correct_UV);
+	COLOR.a = step(circle_size*diagonal_radius, dist);
+}
+"

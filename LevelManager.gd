@@ -4,11 +4,32 @@ extends Node
 const game_hud_scene = preload("res://Scenes/UI/GameHUD/GameHUD.tscn")
 var game_hud
 
+var level_transition_timer = Timer.new()
+var level_to_start: String
+
+func _ready():
+	level_transition_timer.connect("timeout", self, "_do_start_level")
+	level_transition_timer.wait_time = 0.5
+	level_transition_timer.one_shot = true
+	level_transition_timer.process_mode = Timer.TIMER_PROCESS_PHYSICS
+	level_transition_timer.pause_mode = PAUSE_MODE_PROCESS
+	add_child(level_transition_timer)
+
 func start_level(level_name: String):
+	level_to_start = level_name
+	pause_game()
+	if game_hud:
+		game_hud.on_level_ended()
+		level_transition_timer.start()
+		return OK
+	else:
+		return _do_start_level()
+
+func _do_start_level():
 	var status = get_tree().change_scene(
-		"res://Scenes/Levels/{lvl}/{lvl}.tscn".format({"lvl": level_name}))
+		"res://Scenes/Levels/{lvl}/{lvl}.tscn".format({"lvl": level_to_start}))
 	if status != OK:
-		print("Load level " + level_name + ": Error " + str(status))
+		print("Load level " + level_to_start + ": Error " + str(status))
 		return status
 	_setup_level()
 	return status
@@ -24,6 +45,7 @@ func _setup_level():
 		game_hud = game_hud_scene.instance()
 		get_tree().get_root().add_child(game_hud)
 	game_hud.set_player(level_scene.get_player())
+	game_hud.on_level_started()
 
 # Note: this function is over-simplified and may cause unintended behavior
 # if the loaded scene is not a level
