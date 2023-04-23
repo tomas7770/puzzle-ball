@@ -1,0 +1,14 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type spatial;
+render_mode unshaded;
+
+uniform vec3 albedo = vec3(1,1,1);
+uniform sampler2D pattern;
+
+void fragment() {
+	ALBEDO = albedo;
+	ALPHA = 1.0-pow(texture(pattern, 8.0*UV+TIME).r, 1.5);
+}
+"

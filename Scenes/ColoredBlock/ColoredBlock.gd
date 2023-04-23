@@ -18,6 +18,9 @@ func _ready():
 	# a single block without affecting others of the same color
 	mesh_instance.mesh = mesh_instance.mesh.duplicate()
 	mesh_instance.mesh.surface_set_material(0, mesh_instance.mesh.surface_get_material(0).duplicate())
+	var material = mesh_instance.mesh.surface_get_material(0)
+	if material.next_pass:
+		material.next_pass = material.next_pass.duplicate()
 	if !(key.shape) and collision_shape:
 		key.set_shape(collision_shape.shape)
 	if magnetized:

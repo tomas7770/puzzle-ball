@@ -30,10 +30,18 @@ func entered_magnet():
 	if !mesh_instance:
 		return
 	if mesh_instance:
-		mesh_instance.get_active_material(0).next_pass = electricity_material
+		var material = mesh_instance.get_active_material(0)
+		if material.next_pass:
+			material.next_pass.next_pass = electricity_material
+		else:
+			material.next_pass = electricity_material
 
 func exited_magnet():
 	if !mesh_instance:
 		return
 	if mesh_instance:
-		mesh_instance.get_active_material(0).next_pass = null
+		var material = mesh_instance.get_active_material(0)
+		if material.next_pass != electricity_material:
+			material.next_pass.next_pass = null
+		else:
+			material.next_pass = null

@@ -16,6 +16,9 @@ func _ready():
 	# Make the mesh and material unique so that each door can be faded out individually
 	mesh_instance.mesh = mesh_instance.mesh.duplicate()
 	mesh_instance.mesh.surface_set_material(0, mesh_instance.mesh.surface_get_material(0).duplicate())
+	var material = mesh_instance.mesh.surface_get_material(0)
+	if material.next_pass:
+		material.next_pass = material.next_pass.duplicate()
 
 func _on_sensor_activated():
 	if destroyed:
