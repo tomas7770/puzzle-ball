@@ -18,7 +18,6 @@
 [ext_resource path="res://textures/BrownForceField.tres" type="Material" id=16]
 [ext_resource path="res://Scenes/RespawnButton/RespawnButton.tscn" type="PackedScene" id=17]
 
-
 [sub_resource type="BoxShape" id=8]
 extents = Vector3( 6, 1, 0.75 )
 
@@ -426,6 +425,7 @@ mesh = SubResource( 107 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 5.5, 0 )
 
 [node name="ColoredSensor" parent="BlueDoor" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0 )
 color = 2
 
 [node name="CollisionShape" parent="BlueDoor" index="1"]
