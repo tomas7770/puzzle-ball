@@ -208,7 +208,8 @@ _global_script_class_icons={
 
 config/name="Puzzle Ball"
 run/main_scene="res://Scenes/UI/MainMenu/MainMenu.tscn"
-config/icon="res://icon.png"
+config/icon="res://icons/icon.png"
+config/windows_native_icon="res://icons/icon.ico"
 config/quit_on_go_back=false
 
 [autoload]
