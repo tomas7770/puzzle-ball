@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/UI/MainMenu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/OpenSans.ttf" type="DynamicFontData" id=2]
@@ -19,7 +19,11 @@ font_data = ExtResource( 2 )
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=6]
-size = 50
+size = 40
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 32
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=8]
@@ -143,11 +147,22 @@ valign = 1
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -123.5
-margin_top = 20.0
+margin_top = 10.0
 margin_right = 123.5
-margin_bottom = 89.0
+margin_bottom = 79.0
 custom_fonts/font = SubResource( 6 )
 text = "Puzzle Ball"
+align = 1
+
+[node name="GameNameLabel2" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -210.0
+margin_top = 60.0
+margin_right = 210.0
+margin_bottom = 129.0
+custom_fonts/font = SubResource( 11 )
+text = "(name likely to change)"
 align = 1
 
 [node name="ControlsPopup" type="PopupDialog" parent="."]
