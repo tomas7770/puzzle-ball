@@ -8,10 +8,10 @@ A playable demo is available for download: for Windows, macOS **(untested)**, an
 
 **Target Godot version:** 3.5.2
 
+**Also available at:** [Game Jolt](https://gamejolt.com/games/puzzle-ball/804093)
+
 ## Development dependencies
 
 - Addons:
   
   - [Qodot 1.7.3](https://github.com/QodotPlugin/qodot-plugin)
-
-
