@@ -8,3 +8,6 @@ lib/
 
 # Addons
 addons/
+
+# Android keystore
+puzzleball.keystore
