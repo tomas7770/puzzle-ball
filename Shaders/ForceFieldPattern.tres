@@ -9,6 +9,6 @@ uniform sampler2D pattern;
 
 void fragment() {
 	ALBEDO = albedo;
-	ALPHA = 1.0-pow(texture(pattern, 8.0*UV+TIME).r, 1.5);
+	ALPHA = 1.0-pow(texture(pattern, 8.0*UV+mod(TIME, 1.0)).r, 1.5);
 }
 "
