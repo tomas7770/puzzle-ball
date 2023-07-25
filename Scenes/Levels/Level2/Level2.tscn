@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Scenes/PlayerCamera/PlayerCamera.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/PlayerBall/PlayerBall.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Scenes/ColoredBlock/ColoredBlock.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/ColoredDoor/ColoredDoor.tscn" type="PackedScene" id=7]
 [ext_resource path="res://textures/Map/rock.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/DefaultLight/DefaultLight.tscn" type="PackedScene" id=9]
 [ext_resource path="res://textures/BlueDoor.tres" type="Material" id=10]
 [ext_resource path="res://Scenes/EndPortal/EndPortal.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/RespawnButton/RespawnButton.tscn" type="PackedScene" id=12]
@@ -123,6 +124,8 @@ next_level = "Level3"
 
 [node name="PlayerBall" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 6, 0 )
+
+[node name="DefaultLight" parent="." instance=ExtResource( 9 )]
 
 [node name="GrayDoor" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 13, 0 )

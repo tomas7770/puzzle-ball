@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=2]
+[gd_scene load_steps=93 format=2]
 
 [ext_resource path="res://Scenes/Levels/LevelScene.gd" type="Script" id=1]
 [ext_resource path="res://textures/Map/rock.png" type="Texture" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://textures/BlueForceField.tres" type="Material" id=18]
 [ext_resource path="res://Scenes/EndPortal/EndPortal.tscn" type="PackedScene" id=19]
 [ext_resource path="res://textures/GrayForceField.tres" type="Material" id=20]
+[ext_resource path="res://Scenes/DefaultLight/DefaultLight.tscn" type="PackedScene" id=21]
 
 [sub_resource type="BoxShape" id=8]
 extents = Vector3( 1, 0.75, 0.75 )
@@ -494,6 +495,8 @@ next_level = "Level7"
 
 [node name="PlayerBall" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 10, 0 )
+
+[node name="DefaultLight" parent="." instance=ExtResource( 21 )]
 
 [node name="GrayBlock" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 16, 0 )

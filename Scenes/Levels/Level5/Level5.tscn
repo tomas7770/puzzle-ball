@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" type="Resource" id=1]
 [ext_resource path="res://Scenes/Levels/LevelScene.gd" type="Script" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://textures/GrayForceField.tres" type="Material" id=16]
 [ext_resource path="res://Scenes/RespawnButton/RespawnButton.tscn" type="PackedScene" id=17]
 [ext_resource path="res://textures/GrayDoor.tres" type="Material" id=18]
+[ext_resource path="res://Scenes/DefaultLight/DefaultLight.tscn" type="PackedScene" id=19]
 
 [sub_resource type="BoxShape" id=12]
 extents = Vector3( 1, 0.75, 0.75 )
@@ -222,6 +223,8 @@ next_level = "Level6"
 
 [node name="PlayerBall" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 16, 0 )
+
+[node name="DefaultLight" parent="." instance=ExtResource( 19 )]
 
 [node name="PurpleBlock" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 10, 0 )
