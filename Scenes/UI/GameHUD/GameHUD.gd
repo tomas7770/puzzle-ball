@@ -84,23 +84,29 @@ func _process(_delta):
 		interaction_hint.visible = !(camera.is_position_behind(target_position))
 		interaction_hint.rect_position = camera.unproject_position(target_position)
 
-func _on_plr_entered_interaction_area(area):
-	if touchscreen_mode:
-		$TouchControls.show_interact_button()
-		return
+func _on_plr_entered_interaction_area(area: Area):
+	var interaction_name = null
+	if area.has_method("get_interaction_name"):
+		interaction_name = area.get_interaction_name()
+		
 	var interaction_hint = interaction_hint_scene.instance()
 	interaction_hint_map[area] = interaction_hint
 	add_child(interaction_hint)
 	move_child(interaction_hint, 0)
+	interaction_hint.set_interaction_name(interaction_name)
+	
+	if touchscreen_mode:
+		$TouchControls.show_interact_button()
+		interaction_hint.hide_button()
 
 func _on_plr_exited_interaction_area(area):
-	if touchscreen_mode:
-		$TouchControls.hide_interact_button()
-		return
 	var interaction_hint = interaction_hint_map.get(area)
 	if interaction_hint:
 		remove_child(interaction_hint)
 		interaction_hint_map.erase(area)
+	
+	if touchscreen_mode:
+		$TouchControls.hide_interact_button()
 
 func _on_plr_magnet_enabled():
 	if touchscreen_mode:
