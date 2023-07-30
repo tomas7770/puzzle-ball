@@ -23,7 +23,7 @@ func _connect_child_signal(child, signal_name, target, method, binds = [], flags
 		print("Connect " + signal_name + " signal: Error " + str(status))
 
 func _on_plr_entered_endportal():
-	if next_level == null:
+	if next_level == null or next_level.empty():
 		LevelManager.end_game()
 	else:
 		_finish_level()
