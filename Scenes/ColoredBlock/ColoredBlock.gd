@@ -1,9 +1,11 @@
 extends RigidBody
 
 const MagnetScene = preload("res://Scenes/Magnet/Magnet.tscn")
+const LATCH_FACTOR = 2
 
 onready var mesh_instance = $MeshInstance
 onready var key = $ColoredKey
+onready var latch_ray_casts = $LatchRayCasts
 var collision_shape
 var magnet
 
@@ -26,6 +28,18 @@ func _ready():
 	if magnetized:
 		magnet = MagnetScene.instance()
 		add_child(magnet)
+
+func _physics_process(_delta):
+	var ball = _is_on_ball()
+	if ball and not ball.magnet_enabled:
+		add_central_force(LATCH_FACTOR*Vector3(ball.linear_velocity.x-linear_velocity.x, 0, 0))
+
+func _is_on_ball():
+	for ray_cast in latch_ray_casts.get_children():
+		if ray_cast.is_colliding() \
+		and ray_cast.get_collider().get_meta("player", false):
+			return ray_cast.get_collider()
+	return false
 
 func get_magnet():
 	return magnet
