@@ -2,6 +2,8 @@ extends RigidBody
 
 const MagnetScene = preload("res://Scenes/Magnet/Magnet.tscn")
 const LATCH_FACTOR = 2
+# The block height for which latch ray casts will stay on the origin position
+const LATCH_BASE_HEIGHT = 0.75
 
 onready var mesh_instance = $MeshInstance
 onready var key = $ColoredKey
@@ -28,11 +30,19 @@ func _ready():
 	if magnetized:
 		magnet = MagnetScene.instance()
 		add_child(magnet)
+	# Place latch ray casts near the bottom of the block
+	_position_latch_ray_casts()
 
 func _physics_process(_delta):
 	var ball = _is_on_ball()
 	if ball and not ball.magnet_enabled:
 		add_central_force(LATCH_FACTOR*Vector3(ball.linear_velocity.x-linear_velocity.x, 0, 0))
+
+func _position_latch_ray_casts():
+	if !(collision_shape) or !(collision_shape.shape is BoxShape):
+		return
+	for ray_cast in latch_ray_casts.get_children():
+		ray_cast.translation -= Vector3(0, collision_shape.shape.extents.y-LATCH_BASE_HEIGHT, 0)
 
 func _is_on_ball():
 	for ray_cast in latch_ray_casts.get_children():
