@@ -6,6 +6,8 @@ var magnet_force = 30
 var electricity_material = preload("res://textures/ElectricityMaterial.tres")
 var mesh_instance
 
+var enabled = false
+
 func _ready():
 	body = get_parent()
 	if !(body is RigidBody):
@@ -26,7 +28,16 @@ func apply_magnet_forces(dist_vector: Vector3, magnet_safe_distance):
 		body.add_central_force(dist_vector.normalized()*magnet_force*factor)
 	_apply_anti_gravity()
 
+func apply_extra_magnet_forces(target_pos: Vector3):
+	if !body:
+		return
+	var dist_vector = target_pos - body.translation
+	var length = dist_vector.length()
+	var factor = min(pow(length/8.0, 2.0), 1.0)
+	body.add_central_force(dist_vector.normalized()*magnet_force*factor)
+
 func entered_magnet():
+	enabled = true
 	if !mesh_instance:
 		return
 	if mesh_instance:
@@ -37,6 +48,7 @@ func entered_magnet():
 			material.next_pass = electricity_material
 
 func exited_magnet():
+	enabled = false
 	if !mesh_instance:
 		return
 	if mesh_instance:
@@ -45,3 +57,6 @@ func exited_magnet():
 			material.next_pass.next_pass = null
 		else:
 			material.next_pass = null
+
+func is_enabled():
+	return enabled

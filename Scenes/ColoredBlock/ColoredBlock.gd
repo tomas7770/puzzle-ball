@@ -8,6 +8,7 @@ const LATCH_BASE_HEIGHT = 0.75
 onready var mesh_instance = $MeshInstance
 onready var key = $ColoredKey
 onready var latch_ray_casts = $LatchRayCasts
+onready var door_magnet_area = $DoorMagnetArea
 var collision_shape
 var magnet
 
@@ -37,6 +38,7 @@ func _physics_process(_delta):
 	var ball = _is_on_ball()
 	if ball and not ball.magnet_enabled:
 		add_central_force(LATCH_FACTOR*Vector3(ball.linear_velocity.x-linear_velocity.x, 0, 0))
+	_apply_door_magnet_forces()
 
 func _position_latch_ray_casts():
 	if !(collision_shape) or !(collision_shape.shape is BoxShape):
@@ -50,6 +52,13 @@ func _is_on_ball():
 		and ray_cast.get_collider().get_meta("player", false):
 			return ray_cast.get_collider()
 	return false
+
+func _apply_door_magnet_forces():
+	if !(magnet) or !(magnet.is_enabled()):
+		return
+	for body in door_magnet_area.get_overlapping_bodies():
+		if body.get_meta("door", false) and body.is_same_color(key.get_key_color_code()):
+			magnet.apply_extra_magnet_forces(body.translation)
 
 func get_magnet():
 	return magnet

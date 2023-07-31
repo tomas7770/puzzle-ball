@@ -10,6 +10,7 @@ export (float) var door_opacity setget _set_door_opacity
 var destroyed = false
 
 func _ready():
+	set_meta("door", true)
 	if !(sensor.shape):
 		sensor.set_shape(collision_shape.shape)
 	sensor.connect("activated", self, "_on_sensor_activated")
@@ -40,3 +41,6 @@ func _set_door_opacity(opacity):
 		var material = mesh_instance.mesh.surface_get_material(0)
 		if material.get("albedo_color") != null:
 			mesh_instance.mesh.surface_get_material(0).albedo_color.a = opacity
+
+func is_same_color(color):
+	return sensor.get_sensor_color_code() == color

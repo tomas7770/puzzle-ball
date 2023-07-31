@@ -18,3 +18,6 @@ func set_shape(new_shape):
 func _on_ColoredSensor_area_entered(area):
 	if area.has_method("get_key_color_code") && area.get_key_color_code() == color:
 		emit_signal("activated")
+
+func get_sensor_color_code():
+	return color
