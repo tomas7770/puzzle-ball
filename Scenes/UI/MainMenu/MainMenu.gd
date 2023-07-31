@@ -1,6 +1,6 @@
 extends Control
 
-const MAX_LEVEL = 7
+const MAX_LEVEL = 8
 
 onready var level_label = $LevelSelect/Label
 var selected_level = 1
