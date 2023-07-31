@@ -23,7 +23,7 @@ var magnet_enabled = false
 var current_interaction_area = null
 
 func _ready():
-	set_meta("player", true)
+	set_meta(Const.PLAYER_META, true)
 	# To prevent raycasts from being affected by ball rotation;
 	# Their position will be updated manually each physics frame
 	jump_ray_casts.set_as_toplevel(true)

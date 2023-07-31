@@ -10,7 +10,7 @@ export (float) var door_opacity setget _set_door_opacity
 var destroyed = false
 
 func _ready():
-	set_meta("door", true)
+	set_meta(Const.DOOR_META, true)
 	if !(sensor.shape):
 		sensor.set_shape(collision_shape.shape)
 	sensor.connect("activated", self, "_on_sensor_activated")

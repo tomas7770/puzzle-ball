@@ -49,7 +49,7 @@ func _position_latch_ray_casts():
 func _is_on_ball():
 	for ray_cast in latch_ray_casts.get_children():
 		if ray_cast.is_colliding() \
-		and ray_cast.get_collider().get_meta("player", false):
+		and ray_cast.get_collider().get_meta(Const.PLAYER_META, false):
 			return ray_cast.get_collider()
 	return false
 
@@ -57,7 +57,7 @@ func _apply_door_magnet_forces():
 	if !(magnet) or !(magnet.is_enabled()):
 		return
 	for body in door_magnet_area.get_overlapping_bodies():
-		if body.get_meta("door", false) and body.is_same_color(key.get_key_color_code()):
+		if body.get_meta(Const.DOOR_META, false) and body.is_same_color(key.get_key_color_code()):
 			magnet.apply_extra_magnet_forces(body.translation)
 
 func get_magnet():
