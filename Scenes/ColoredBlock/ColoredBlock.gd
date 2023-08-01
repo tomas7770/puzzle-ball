@@ -1,6 +1,7 @@
 extends RigidBody
 
 const MagnetScene = preload("res://Scenes/Magnet/Magnet.tscn")
+const PreviewMaterial = preload("res://textures/Preview.tres")
 const LATCH_FACTOR = 2
 # The block height for which latch ray casts will stay on the origin position
 const LATCH_BASE_HEIGHT = 0.75
@@ -62,3 +63,9 @@ func _apply_door_magnet_forces():
 
 func get_magnet():
 	return magnet
+
+func create_respawn_preview():
+	var preview: MeshInstance = MeshInstance.new()
+	preview.mesh = mesh_instance.mesh.duplicate()
+	preview.mesh.surface_set_material(0, PreviewMaterial)
+	return preview

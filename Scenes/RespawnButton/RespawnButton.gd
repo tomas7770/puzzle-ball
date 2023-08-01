@@ -41,3 +41,9 @@ func _create_particles(position1, position2, parent):
 
 func get_interaction_name():
 	return INTERACTION_NAME
+
+func get_object_to_respawn():
+	return get_node(object_to_respawn)
+
+func get_respawn_transform():
+	return _object_clone.transform
