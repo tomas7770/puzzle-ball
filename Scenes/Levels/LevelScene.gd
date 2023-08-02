@@ -1,6 +1,7 @@
 extends Spatial
 
 export(String) var next_level
+export(String) var level_name
 
 onready var player_camera = $PlayerCamera
 onready var player_ball = $PlayerBall

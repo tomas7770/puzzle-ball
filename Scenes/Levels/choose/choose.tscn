@@ -490,6 +490,7 @@ points = PoolVector3Array( 22, -1, -1, 22, -2, -1, 24, -2, -1, 22, -1, 1, 22, -2
 [node name="choose" type="Spatial"]
 script = ExtResource( 1 )
 next_level = "homerun"
+level_name = "Choose your adventure"
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 5 )]
 

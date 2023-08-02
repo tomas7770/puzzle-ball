@@ -136,6 +136,7 @@ points = PoolVector3Array( -33, 41, -1, -33, 15, -1, -23, 15, -1, -23, 41, -1, -
 [node name="impclimb" type="Spatial"]
 script = ExtResource( 1 )
 next_level = "stuck"
+level_name = "Impossible climb"
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 2 )]
 

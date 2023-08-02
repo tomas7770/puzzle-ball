@@ -158,6 +158,7 @@ points = PoolVector3Array( 26, -16, -1, 26, -18, -1, 36, -18, -1, 36, -16, -1, 2
 [node name="trickgap" type="Spatial"]
 script = ExtResource( 1 )
 next_level = "impclimb"
+level_name = "Trick gap"
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 4 )]
 

@@ -4,6 +4,8 @@ const interaction_hint_scene = preload("res://Scenes/UI/InteractionHint/Interact
 
 onready var magnet_icon = $MagnetContainer/MagnetIcon
 onready var magnet_button_label = $MagnetContainer/ButtonTexture/Label
+onready var level_name_label = $LevelNameLabel
+onready var level_name_label_animplayer = $LevelNameLabel/AnimationPlayer
 onready var pause_panel = $PausePanel
 onready var transition_anim_player = $TransitionRect/AnimationPlayer
 
@@ -40,6 +42,9 @@ func set_player(player: RigidBody):
 	_on_plr_magnet_disabled()
 
 func on_level_started():
+	var level_name = LevelManager.get_level_name()
+	if level_name:
+		level_name_label.text = level_name
 	_transition_in()
 	$LevelTransitionTimer.start()
 
@@ -126,4 +131,5 @@ func _transition_out():
 
 func _on_LevelTransitionTimer_timeout():
 	_unpause()
+	level_name_label_animplayer.play("Fade")
 	pause_menu_locked = false

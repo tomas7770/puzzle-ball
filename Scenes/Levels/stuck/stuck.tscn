@@ -237,6 +237,7 @@ points = PoolVector3Array( 15, -6, -1, 15, -8, -1, 31, -8, -1, 31, -6, -1, 15, -
 [node name="stuck" type="Spatial"]
 script = ExtResource( 5 )
 next_level = "antigrav"
+level_name = "Stuck"
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 1 )]
 

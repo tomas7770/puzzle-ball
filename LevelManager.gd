@@ -78,3 +78,6 @@ func end_game():
 	var status = get_tree().change_scene("res://Scenes/UI/EndScreen/EndScreen.tscn")
 	if status != OK:
 		print("End game: Error " + str(status))
+
+func get_level_name():
+	return get_tree().current_scene.get("level_name")

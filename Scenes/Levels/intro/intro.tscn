@@ -90,6 +90,7 @@ points = PoolVector3Array( 1, 19, -1, 1, 13, -1, 4, 13, -1, 4, 19, -1, 1, 19, 1,
 [node name="intro" type="Spatial"]
 script = ExtResource( 3 )
 next_level = "thegap"
+level_name = "Introduction"
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 2 )]
 
