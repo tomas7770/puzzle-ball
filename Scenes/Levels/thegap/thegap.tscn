@@ -204,7 +204,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 4, 0 )
 
 [node name="Map" type="Spatial" parent="."]
 script = ExtResource( 3 )
-map_file = "Scenes/Levels/Level2/Map/Level2.map"
+map_file = "Scenes/Levels/thegap/Map/thegap.map"
 inverse_scale_factor = 16.0
 entity_fgd = ExtResource( 4 )
 base_texture_dir = "res://textures"
