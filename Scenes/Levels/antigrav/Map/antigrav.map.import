@@ -1,0 +1,13 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+path="res://.import/antigrav.map-d19d730a0eb7990b96b3c15ff6ae10ee.tres"
+
+[deps]
+
+source_file="res://Scenes/Levels/antigrav/Map/antigrav.map"
+dest_files=[ "res://.import/antigrav.map-d19d730a0eb7990b96b3c15ff6ae10ee.tres" ]
+
+[params]
+

@@ -1,0 +1,13 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+path="res://.import/thegap.map-f278841994b6e5033b7ee885918bf531.tres"
+
+[deps]
+
+source_file="res://Scenes/Levels/thegap/Map/thegap.map"
+dest_files=[ "res://.import/thegap.map-f278841994b6e5033b7ee885918bf531.tres" ]
+
+[params]
+

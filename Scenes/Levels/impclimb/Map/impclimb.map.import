@@ -1,0 +1,13 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+path="res://.import/impclimb.map-399bbe752fda6cfe56400d2791c90ef5.tres"
+
+[deps]
+
+source_file="res://Scenes/Levels/impclimb/Map/impclimb.map"
+dest_files=[ "res://.import/impclimb.map-399bbe752fda6cfe56400d2791c90ef5.tres" ]
+
+[params]
+

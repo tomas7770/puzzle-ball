@@ -1,11 +1,12 @@
 extends Control
 
-const MAX_LEVEL = 8
+var MAX_LEVEL
 
 onready var level_label = $LevelSelect/Label
 var selected_level = 1
 
 func _ready():
+	MAX_LEVEL = Const.LEVEL_ORDER.size()
 	if !Global.demo_popup_shown and OS.has_feature("standalone"):
 		$DemoPopup.popup()
 		$DemoPopup/OkDemoButton.grab_focus()
@@ -15,7 +16,7 @@ func _ready():
 	_update_level_label()
 
 func _on_PlayButton_pressed():
-	var status = LevelManager.start_level("Level" + str(selected_level))
+	var status = LevelManager.start_level(Const.LEVEL_ORDER[selected_level-1])
 	if status != OK:
 		print(status)
 

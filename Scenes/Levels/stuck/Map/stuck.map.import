@@ -1,0 +1,13 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+path="res://.import/stuck.map-acd7bc70be28440551a159061e71c73b.tres"
+
+[deps]
+
+source_file="res://Scenes/Levels/stuck/Map/stuck.map"
+dest_files=[ "res://.import/stuck.map-acd7bc70be28440551a159061e71c73b.tres" ]
+
+[params]
+

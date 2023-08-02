@@ -1,0 +1,13 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+path="res://.import/homerun.map-f927bcbb035fba74f40b2a7086a1e112.tres"
+
+[deps]
+
+source_file="res://Scenes/Levels/homerun/Map/homerun.map"
+dest_files=[ "res://.import/homerun.map-f927bcbb035fba74f40b2a7086a1e112.tres" ]
+
+[params]
+
