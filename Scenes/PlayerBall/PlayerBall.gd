@@ -109,7 +109,7 @@ func _apply_magnet_forces():
 func _body_entered_magnet(body):
 	var magnet = _body_get_magnet(body)
 	if magnet:
-		magnet.entered_magnet()
+		magnet.entered_magnet(self)
 
 func _body_exited_magnet(body):
 	var magnet = _body_get_magnet(body)
