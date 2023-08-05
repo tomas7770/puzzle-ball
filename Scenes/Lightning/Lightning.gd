@@ -14,10 +14,7 @@ func _process(_delta):
 	var pos1 = edge_obj1.get_global_transform_interpolated().origin
 	var pos2 = edge_obj2.get_global_transform_interpolated().origin
 	translation = pos1.linear_interpolate(pos2, 0.5)
-	var up_vector = Vector3(0,1,0)
-	if pos1.x < pos2.x:
-		up_vector = -up_vector
-	look_at(pos2, up_vector)
+	look_at(pos2, (pos2-translation).cross(Vector3(0,0,1)))
 	mesh_instance.mesh.size = Vector2(pos1.distance_to(pos2), 1.0)
 
 func set_edge_obj1(obj):
