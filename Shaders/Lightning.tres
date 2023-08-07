@@ -7,7 +7,7 @@ render_mode unshaded;
 float random(vec2 uv) {
     return fract(sin(dot(uv.xy,
         vec2(12.9898,78.233))) *
-            43758.5453123);
+            43.5453123);
 }
 
 float noise(vec2 uv) {
@@ -42,7 +42,7 @@ float fbm(vec2 uv) {
 }
 
 void fragment() {
-	float y = 0.5-(1.0-2.0*abs(UV.x-0.5))*sin(fbm(vec2(UV.x*4.0, TIME*4.0)))+(0.5-abs(UV.x-0.5));
+	float y = 0.5-(1.0-2.0*abs(UV.x-0.5))*sin(fbm(vec2(UV.x*4.0, mod(TIME*4.0, 4.0))))+(0.5-abs(UV.x-0.5));
 	ALPHA = 1.0-5.0*abs(UV.y-y);
 }
 "
