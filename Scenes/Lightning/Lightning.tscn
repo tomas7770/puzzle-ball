@@ -5,6 +5,7 @@
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
+shader_param/dist = 1.0
 
 [sub_resource type="QuadMesh" id=2]
 material = SubResource( 1 )
