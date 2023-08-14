@@ -43,6 +43,7 @@ float fbm(vec2 uv) {
 
 void fragment() {
 	float y = 0.5-(1.0-2.0*abs(UV.x-0.5))*sin(fbm(vec2(UV.x*4.0, mod(TIME*4.0, 4.0))))+(0.5-abs(UV.x-0.5));
-	ALPHA = 1.0-5.0*abs(UV.y-y);
+	float y_dist = abs(UV.y-y);
+	ALPHA = 0.5*smoothstep(exp(-4.0), 1.0, exp(-y_dist*8.0))+0.5*smoothstep(0.04, 1.0, 0.02/y_dist);
 }
 "
