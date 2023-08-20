@@ -12,6 +12,7 @@ const LEVEL_ORDER = [
 	"trickgap",
 	"impclimb",
 	"stuck",
+	"curse",
 	"antigrav",
 	"choose",
 	"homerun",

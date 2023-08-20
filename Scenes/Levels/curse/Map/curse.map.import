@@ -1,0 +1,13 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+path="res://.import/curse.map-524d84274eb42f487eef64a7e7848321.tres"
+
+[deps]
+
+source_file="res://Scenes/Levels/curse/Map/curse.map"
+dest_files=[ "res://.import/curse.map-524d84274eb42f487eef64a7e7848321.tres" ]
+
+[params]
+
