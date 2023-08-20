@@ -22,13 +22,19 @@ func _apply_anti_gravity():
 		return
 	body.add_central_force(Vector3.UP*body.weight*body.gravity_scale)
 
-func apply_magnet_forces(dist_vector: Vector3, magnet_safe_distance):
+func apply_magnet_forces(dist_vector: Vector3, magnet_safe_distance, repel = false):
 	if !body:
 		return
 	var length = dist_vector.length()
-	if length > magnet_safe_distance:
-		var factor = min(pow(length/8.0, 2.0), 1.0)
-		body.add_central_force(dist_vector.normalized()*magnet_force*factor)
+	
+	if repel:
+		var factor = 1.0-min(pow(length/8.0, 2.0), 1.0)
+		body.add_central_force(-dist_vector.normalized()*magnet_force*factor)
+	else:
+		if length > magnet_safe_distance:
+			var factor = min(pow(length/8.0, 2.0), 1.0)
+			body.add_central_force(dist_vector.normalized()*magnet_force*factor)
+	
 	_apply_anti_gravity()
 
 func apply_extra_magnet_forces(target_pos: Vector3):

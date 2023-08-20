@@ -10,6 +10,7 @@ signal plr_magnet_disabled
 onready var jump_ray_casts = $JumpRayCasts
 onready var magnet_area = $MagnetArea
 onready var mesh_instance = $MeshInstance
+onready var key = $ColoredKey
 var electricity_material = preload("res://textures/ElectricityMaterial.tres")
 
 var acceleration = 20
@@ -104,7 +105,10 @@ func _apply_magnet_forces():
 	for body in magnet_area.get_overlapping_bodies():
 		var magnet = _body_get_magnet(body)
 		if magnet:
-			magnet.apply_magnet_forces(translation - body.translation, magnet_safe_distance)
+			var repel = false
+			if body.is_same_color(key.get_key_color_code()):
+				repel = true
+			magnet.apply_magnet_forces(translation - body.translation, magnet_safe_distance, repel)
 
 func _body_entered_magnet(body):
 	var magnet = _body_get_magnet(body)

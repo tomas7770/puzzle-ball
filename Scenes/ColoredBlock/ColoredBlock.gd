@@ -69,3 +69,6 @@ func create_respawn_preview():
 	preview.mesh = mesh_instance.mesh.duplicate()
 	preview.mesh.surface_set_material(0, PreviewMaterial)
 	return preview
+
+func is_same_color(color):
+	return key.get_key_color_code() == color
