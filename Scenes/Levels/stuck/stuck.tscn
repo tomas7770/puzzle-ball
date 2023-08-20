@@ -20,11 +20,11 @@
 [ext_resource path="res://Scenes/DefaultLight/DefaultLight.tscn" type="PackedScene" id=18]
 
 [sub_resource type="BoxShape" id=8]
-extents = Vector3( 6, 1, 0.75 )
+extents = Vector3( 6.4, 1, 0.75 )
 
 [sub_resource type="CubeMesh" id=9]
 material = ExtResource( 14 )
-size = Vector3( 12, 2, 1.5 )
+size = Vector3( 12.8, 2, 1.5 )
 
 [sub_resource type="BoxShape" id=41]
 extents = Vector3( 1, 0.75, 0.75 )
@@ -289,7 +289,7 @@ mesh = SubResource( 42 )
 color = 1
 
 [node name="BlueBlock" parent="." instance=ExtResource( 13 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 4, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 4, 0 )
 collision_layer = 9
 collision_mask = 9
 mass = 0.1
