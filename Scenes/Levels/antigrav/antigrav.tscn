@@ -186,7 +186,7 @@ points = PoolVector3Array( 30, 6, -1, 26, 4, -1, 30, 4, -1, 30, 6, 1, 26, 4, 1, 
 
 [node name="antigrav" type="Spatial"]
 script = ExtResource( 2 )
-next_level = "choose"
+next_level = "prison"
 level_name = "Anti-gravity"
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 5 )]

@@ -1,0 +1,13 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+path="res://.import/prison.map-29ad91e225b5cceae0dc56da744da5fa.tres"
+
+[deps]
+
+source_file="res://Scenes/Levels/prison/Map/prison.map"
+dest_files=[ "res://.import/prison.map-29ad91e225b5cceae0dc56da744da5fa.tres" ]
+
+[params]
+

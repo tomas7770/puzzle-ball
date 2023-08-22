@@ -14,6 +14,7 @@ const LEVEL_ORDER = [
 	"stuck",
 	"curse",
 	"antigrav",
+	"prison",
 	"choose",
 	"homerun",
 ]
