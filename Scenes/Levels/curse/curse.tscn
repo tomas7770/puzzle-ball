@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://addons/qodot/src/nodes/qodot_map.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/PlayerCamera/PlayerCamera.tscn" type="PackedScene" id=2]
@@ -7,7 +7,7 @@
 [ext_resource path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" type="Resource" id=5]
 [ext_resource path="res://Scenes/Levels/LevelScene.gd" type="Script" id=6]
 [ext_resource path="res://textures/Map/rock.png" type="Texture" id=7]
-[ext_resource path="res://Scenes/ColoredBlock/ColoredBlock.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/ColoredBlock/BlueBlock.tscn" type="PackedScene" id=8]
 [ext_resource path="res://textures/BrownBlock.tres" type="Material" id=9]
 [ext_resource path="res://Scenes/ColoredDoor/ColoredDoor.tscn" type="PackedScene" id=10]
 [ext_resource path="res://textures/BlueDoor.tres" type="Material" id=11]
@@ -16,6 +16,8 @@
 [ext_resource path="res://Scenes/EndPortal/EndPortal.tscn" type="PackedScene" id=14]
 [ext_resource path="res://textures/GrayBlock.tres" type="Material" id=15]
 [ext_resource path="res://textures/BrownDoor.tres" type="Material" id=16]
+[ext_resource path="res://Scenes/ColoredBlock/BrownBlock.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scenes/ColoredBlock/GrayBlock.tscn" type="PackedScene" id=18]
 
 [sub_resource type="BoxShape" id=12]
 extents = Vector3( 1, 0.75, 0.75 )
@@ -113,10 +115,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 16, 0 )
 
 [node name="DefaultLight" parent="." instance=ExtResource( 4 )]
 
-[node name="BrownBlock" parent="." instance=ExtResource( 8 )]
+[node name="BrownBlock" parent="." instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2, 0 )
-collision_layer = 3
-collision_mask = 3
 
 [node name="CollisionShape" parent="BrownBlock" index="0"]
 shape = SubResource( 12 )
@@ -126,10 +126,6 @@ mesh = SubResource( 13 )
 
 [node name="BlueBlock" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3, 0 )
-collision_layer = 9
-collision_mask = 9
-mass = 0.1
-magnetized = false
 
 [node name="CollisionShape" parent="BlueBlock" index="0"]
 shape = SubResource( 30 )
@@ -137,22 +133,14 @@ shape = SubResource( 30 )
 [node name="MeshInstance" parent="BlueBlock" index="1"]
 mesh = SubResource( 27 )
 
-[node name="ColoredKey" parent="BlueBlock" index="2"]
-color = 2
-
-[node name="GrayBlock" parent="." instance=ExtResource( 8 )]
+[node name="GrayBlock" parent="." instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 20, 0 )
-collision_layer = 5
-collision_mask = 5
 
 [node name="CollisionShape" parent="GrayBlock" index="0"]
 shape = SubResource( 12 )
 
 [node name="MeshInstance" parent="GrayBlock" index="1"]
 mesh = SubResource( 31 )
-
-[node name="ColoredKey" parent="GrayBlock" index="2"]
-color = 1
 
 [node name="BlueDoor" parent="." instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 4, 0 )

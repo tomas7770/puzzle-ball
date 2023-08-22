@@ -6,7 +6,7 @@
 [ext_resource path="res://Scenes/PlayerBall/PlayerBall.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/PlayerCamera/PlayerCamera.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/EndPortal/EndPortal.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/ColoredBlock/ColoredBlock.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/ColoredBlock/GrayBlock.tscn" type="PackedScene" id=7]
 [ext_resource path="res://textures/GrayBlock.tres" type="Material" id=8]
 [ext_resource path="res://textures/GrayForceField.tres" type="Material" id=9]
 [ext_resource path="res://Scenes/RespawnButton/RespawnButton.tscn" type="PackedScene" id=10]
@@ -94,17 +94,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 2, 0 )
 
 [node name="GrayBlock" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 2, 0 )
-collision_layer = 5
-collision_mask = 5
 
 [node name="CollisionShape" parent="GrayBlock" index="0"]
 shape = SubResource( 9 )
 
 [node name="MeshInstance" parent="GrayBlock" index="1"]
 mesh = SubResource( 10 )
-
-[node name="ColoredKey" parent="GrayBlock" index="2"]
-color = 1
 
 [node name="GrayDoor" parent="." instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 8, 0 )

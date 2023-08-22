@@ -5,7 +5,7 @@
 [ext_resource path="res://Scenes/Levels/LevelScene.gd" type="Script" id=3]
 [ext_resource path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" type="Resource" id=4]
 [ext_resource path="res://addons/qodot/src/nodes/qodot_map.gd" type="Script" id=5]
-[ext_resource path="res://Scenes/ColoredBlock/ColoredBlock.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/ColoredBlock/GrayBlock.tscn" type="PackedScene" id=6]
 [ext_resource path="res://textures/Map/rock.png" type="Texture" id=7]
 [ext_resource path="res://Scenes/DefaultLight/DefaultLight.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/EndPortal/EndPortal.tscn" type="PackedScene" id=10]
@@ -128,9 +128,6 @@ shape = SubResource( 19 )
 
 [node name="MeshInstance" parent="GrayBlock" index="1"]
 mesh = SubResource( 20 )
-
-[node name="ColoredKey" parent="GrayBlock" index="2"]
-color = 1
 
 [node name="EndPortal" parent="." instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 16, 0 )

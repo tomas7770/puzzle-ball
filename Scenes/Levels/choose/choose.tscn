@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=2]
+[gd_scene load_steps=95 format=2]
 
 [ext_resource path="res://Scenes/Levels/LevelScene.gd" type="Script" id=1]
 [ext_resource path="res://textures/Map/rock.png" type="Texture" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" type="Resource" id=4]
 [ext_resource path="res://Scenes/PlayerCamera/PlayerCamera.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/PlayerBall/PlayerBall.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/ColoredBlock/ColoredBlock.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/RespawnButton/RespawnButton.tscn" type="PackedScene" id=8]
 [ext_resource path="res://textures/GrayBlock.tres" type="Material" id=9]
 [ext_resource path="res://Scenes/ColoredDoor/ColoredDoor.tscn" type="PackedScene" id=10]
@@ -21,6 +20,9 @@
 [ext_resource path="res://Scenes/EndPortal/EndPortal.tscn" type="PackedScene" id=19]
 [ext_resource path="res://textures/GrayForceField.tres" type="Material" id=20]
 [ext_resource path="res://Scenes/DefaultLight/DefaultLight.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Scenes/ColoredBlock/GrayBlock.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Scenes/ColoredBlock/BlueBlock.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Scenes/ColoredBlock/PurpleBlock.tscn" type="PackedScene" id=24]
 
 [sub_resource type="BoxShape" id=8]
 extents = Vector3( 1, 0.75, 0.75 )
@@ -499,10 +501,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 10, 0 )
 
 [node name="DefaultLight" parent="." instance=ExtResource( 21 )]
 
-[node name="GrayBlock" parent="." instance=ExtResource( 7 )]
+[node name="GrayBlock" parent="." instance=ExtResource( 22 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 16, 0 )
-collision_layer = 5
-collision_mask = 5
 
 [node name="CollisionShape" parent="GrayBlock" index="0"]
 shape = SubResource( 8 )
@@ -510,13 +510,8 @@ shape = SubResource( 8 )
 [node name="MeshInstance" parent="GrayBlock" index="1"]
 mesh = SubResource( 9 )
 
-[node name="ColoredKey" parent="GrayBlock" index="2"]
-color = 1
-
-[node name="GrayBlock2" parent="." instance=ExtResource( 7 )]
+[node name="GrayBlock2" parent="." instance=ExtResource( 22 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -8, 0 )
-collision_layer = 5
-collision_mask = 5
 
 [node name="CollisionShape" parent="GrayBlock2" index="0"]
 shape = SubResource( 8 )
@@ -524,15 +519,8 @@ shape = SubResource( 8 )
 [node name="MeshInstance" parent="GrayBlock2" index="1"]
 mesh = SubResource( 9 )
 
-[node name="ColoredKey" parent="GrayBlock2" index="2"]
-color = 1
-
-[node name="BlueBlock" parent="." instance=ExtResource( 7 )]
+[node name="BlueBlock" parent="." instance=ExtResource( 23 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 10, 0 )
-collision_layer = 9
-collision_mask = 9
-mass = 0.1
-magnetized = false
 
 [node name="CollisionShape" parent="BlueBlock" index="0"]
 shape = SubResource( 8 )
@@ -540,15 +528,8 @@ shape = SubResource( 8 )
 [node name="MeshInstance" parent="BlueBlock" index="1"]
 mesh = SubResource( 35 )
 
-[node name="ColoredKey" parent="BlueBlock" index="2"]
-color = 2
-
-[node name="BlueBlock2" parent="." instance=ExtResource( 7 )]
+[node name="BlueBlock2" parent="." instance=ExtResource( 23 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 6, 0 )
-collision_layer = 9
-collision_mask = 9
-mass = 0.1
-magnetized = false
 
 [node name="CollisionShape" parent="BlueBlock2" index="0"]
 shape = SubResource( 8 )
@@ -556,15 +537,8 @@ shape = SubResource( 8 )
 [node name="MeshInstance" parent="BlueBlock2" index="1"]
 mesh = SubResource( 35 )
 
-[node name="ColoredKey" parent="BlueBlock2" index="2"]
-color = 2
-
-[node name="PurpleBlock" parent="." instance=ExtResource( 7 )]
+[node name="PurpleBlock" parent="." instance=ExtResource( 24 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 6, 0 )
-collision_layer = 17
-collision_mask = 17
-mass = 2.5
-gravity_scale = -0.5
 
 [node name="CollisionShape" parent="PurpleBlock" index="0"]
 shape = SubResource( 8 )
@@ -572,24 +546,14 @@ shape = SubResource( 8 )
 [node name="MeshInstance" parent="PurpleBlock" index="1"]
 mesh = SubResource( 36 )
 
-[node name="ColoredKey" parent="PurpleBlock" index="2"]
-color = 3
-
-[node name="PurpleBlock2" parent="." instance=ExtResource( 7 )]
+[node name="PurpleBlock2" parent="." instance=ExtResource( 24 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -12, 0 )
-collision_layer = 17
-collision_mask = 17
-mass = 2.5
-gravity_scale = -0.5
 
 [node name="CollisionShape" parent="PurpleBlock2" index="0"]
 shape = SubResource( 8 )
 
 [node name="MeshInstance" parent="PurpleBlock2" index="1"]
 mesh = SubResource( 36 )
-
-[node name="ColoredKey" parent="PurpleBlock2" index="2"]
-color = 3
 
 [node name="GrayDoor" parent="." instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 11, 0 )
